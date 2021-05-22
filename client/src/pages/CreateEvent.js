@@ -51,19 +51,19 @@ const CreateEvent = () => (
     </Form.Field>
     <DateTimeForm />
     <div class="field">
-    <label>Address</label>
-    <div class="fields">
-      <div class="twelve wide field">
-        <input type="text" name="[address]" placeholder="Street Address" />
+      <label>Address</label>
+      <div class="fields">
+        <div class="twelve wide field">
+          <input type="text" name="[address]" placeholder="Street Address" />
+        </div>
       </div>
     </div>
-  </div>
-  <div class="ui form">
-  <div class="field">
-    <label>City</label>
-    <input type="text" name="[city]" placeholder="City"/>
-  </div>
-</div>
+    <div class="ui form">
+      <div class="field">
+        <label>City</label>
+        <input type="text" name="[city]" placeholder="City" />
+      </div>
+    </div>
     <div class="field">
       <label>State</label>
       <select class="ui fluid dropdown">
@@ -122,8 +122,8 @@ const CreateEvent = () => (
       </select>
     </div>
     <div class="field">
-        <label>Zip code</label>
-        <input type="text" name="zipcode[zip-code]" maxlength="5" placeholder="Zip code"/>
+      <label>Zip code</label>
+      <input type="text" name="zipcode[zip-code]" maxlength="5" placeholder="Zip code" />
     </div>
     <Form.TextArea label='About' placeholder='Tell us about your event' />
     <Button type='submit'>Create Event</Button>
