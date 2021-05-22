@@ -121,6 +121,10 @@ const CreateEvent = () => (
         <option value="WY">Wyoming</option>
       </select>
     </div>
+    <div class="field">
+    <label>Zip code</label>
+          <input type="text" name="zipcode[zip-code]" maxlength="5" placeholder="Zip code"/>
+        </div>
     <Form.TextArea label='About' placeholder='Tell us about your event' />
     <Button type='submit'>Create Event</Button>
   </Form>
