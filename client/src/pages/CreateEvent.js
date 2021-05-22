@@ -51,6 +51,14 @@ const CreateEvent = () => (
     </Form.Field>
     <DateTimeForm />
     <div class="field">
+    <label>Address</label>
+    <div class="fields">
+      <div class="twelve wide field">
+        <input type="text" name="[address]" placeholder="Street Address" />
+      </div>
+    </div>
+  </div>
+    <div class="field">
       <label>State</label>
       <select class="ui fluid dropdown">
         <option value="">State</option>
