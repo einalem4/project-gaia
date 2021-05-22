@@ -1,18 +1,47 @@
 import React from 'react';
 import { Button, Form } from 'semantic-ui-react'
-import { useState } from "react";
-import { DatePicker } from "antd";
-import "antd/dist/antd.css";
+import {DateInput,TimeInput} from 'semantic-ui-calendar-react';
 
-function AntDatepicker() {
-  const [date, setDate] = useState(new Date());
+class DateTimeForm extends React.Component {
+  constructor(props) {
+    super(props);
 
-  function onChange(date, dateString) {
-    setDate(date);
+    this.state = {
+      date: '',
+      time: '',
+    };
   }
 
-  return <DatePicker onChange={onChange} />;
+  handleChange = (event, { name, value }) => {
+    if (this.state.hasOwnProperty(name)) {
+      this.setState({ [name]: value });
+    }
+  }
+
+  render() {
+    return (
+      <Form class="ui form">
+        <DateInput
+          label="Date"
+          name="date"
+          placeholder="Date"
+          value={this.state.date}
+          iconPosition="left"
+          onChange={this.handleChange}
+        />
+        <TimeInput
+          label="Time"
+          name="time"
+          placeholder="Start Time"
+          value={this.state.time}
+          iconPosition="left"
+          onChange={this.handleChange}
+        />
+      </Form>
+    );
+  }
 }
+
 
 const CreateEvent = () => (
   <Form>
@@ -20,7 +49,7 @@ const CreateEvent = () => (
       <label>Event Name</label>
       <input placeholder='Event Name' />
     </Form.Field>
-    <AntDatepicker/>
+    <DateTimeForm />
     <Form.TextArea label='About' placeholder='Tell us about your event' />
     <Button type='submit'>Create Event</Button>
   </Form>
