@@ -58,6 +58,12 @@ const CreateEvent = () => (
       </div>
     </div>
   </div>
+  <div class="ui form">
+  <div class="field">
+    <label>City</label>
+    <input type="text" name="[city]" placeholder="City"/>
+  </div>
+</div>
     <div class="field">
       <label>State</label>
       <select class="ui fluid dropdown">
