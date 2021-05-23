@@ -5,6 +5,7 @@ import ApolloClient from 'apollo-boost';
 import CreateEvent from './pages/CreateEvent';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const client = new ApolloClient({
   request: operation => {
