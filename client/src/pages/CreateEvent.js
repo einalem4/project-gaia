@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_EVENT } from '../utils/mutations';
-import { QUERY_EVENTS, QUERY_ME } from '../utils/queries';
+import { QUERY_EVENTS } from '../utils/queries';
 import { Button, Form, Col } from 'react-bootstrap';
 
 const CreateEvent = () => {
@@ -18,13 +18,6 @@ const CreateEvent = () => {
       } catch (e) {
         console.error(e);
       }
-
-      // update me object's cache, appending new thought to the end of the array
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, events: [...me.events, addEvent] } }
-      });
     }
   });
 
