@@ -9,12 +9,12 @@ const Header = () => {
     };
 
     return(
-        <header className='w.100 flex-row justify-space-between align-center'>
+        <header className='w-100 flex-row justify-space-between align-center'>
             <Link to="/">
-                <h1>Project Gaia</h1>
+                <h1 id='logo'>Project Gaia</h1>
             </Link>
 
-            <nav className="text-center">
+            <nav className="w-25 flex-row justify-space-between text-center">
                 <Link to="/profile">Profile</Link>
                 <a href="/" onClick={logout}>
                     Logout
