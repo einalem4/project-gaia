@@ -1,11 +1,9 @@
 :root {
-  --primary: #e9c46a;
-  --secondary: #2a9d8f;
-  --tertiary: #2a9d8f;
-  --quatrinary: #264653;
-  --light: #e1f5f4;
-  --dark: #6c7575;
-  --error: rgb(228, 46, 1);
+  --yellow: #e9c46a;
+  --blue: #2a9de6;
+  --green: #46b04d;
+  --dark-blue: #0e6499;
+  --error: rgb(226, 15, 15);
 }
 
 * {
@@ -43,7 +41,7 @@ h6 {
 }
 
 h1 {
-  color: var(--primary);
+  color: white;
   font-family: 'lust', serif;
 }
 
@@ -61,10 +59,7 @@ header {
   top: 0;
   left: 0;
   z-index: 9999;
-}
-
-nav {
-
+  background-color: var(--dark-blue);
 }
 
 nav a {

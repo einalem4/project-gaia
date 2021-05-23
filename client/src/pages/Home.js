@@ -1,5 +1,4 @@
 import React from 'react';
-import { Form } from 'semantic-ui-react';
 
 const Home = () => {
     return(
@@ -8,12 +7,12 @@ const Home = () => {
                 <div>
                     <h2>cleaning the world,<br /> one community at a time</h2>
                     <p>Find a community cleanup near you</p>
-                    <Form>
+                    {/* <Form>
                         <Form.Field>
                             <label className='none'>Search Zipcode</label>
                             <input placeholder='Search by Zipcode' />
                         </Form.Field>
-                    </Form>
+                    </Form> */}
                 </div>
             </section>
         </>
