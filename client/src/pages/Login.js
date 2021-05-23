@@ -42,16 +42,18 @@ function Login(props) {
             name="email"
             type="email"
             id="email"
+            value={formState.email}
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
             placeholder="******"
             name="password"
             type="password"
-            id="pwd"
+            id="password"
+            value={formState.password}
             onChange={handleChange}
           />
         </div>
