@@ -7,6 +7,7 @@ import Header from './components/Header';
 
 import Home from './pages/Home';
 import CreateEvent from './pages/CreateEvent';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const client = new ApolloClient({
   request: operation => {

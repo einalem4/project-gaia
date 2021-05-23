@@ -12,8 +12,6 @@ const typeDefs = gql`
         username: String
         email: String
         events: [Event]
-        friends: [User]
-        comments: [Comment]
         eventCount: Int
     }
 
