@@ -21,3 +21,17 @@ export const QUERY_EVENT = gql`
     }
   }
 `;
+
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      events {
+        _id
+        eventText
+        createdAt
+    }
+  }
+`;
