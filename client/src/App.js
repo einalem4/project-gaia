@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import CreateEvent from './pages/CreateEvent';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const client = new ApolloClient({
   request: operation => {
