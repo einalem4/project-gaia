@@ -5,7 +5,7 @@ import { QUERY_EVENTS } from '../utils/queries';
 import { Button, Form, Col } from 'react-bootstrap';
 
 const CreateEvent = () => {
-  const [eventText, setText] = useState('');
+  const [eventData, setText] = useState('');
   const [addEvent] = useMutation(ADD_EVENT, {
     update(cache, { data: { addEvent } }) {
       try {
@@ -13,7 +13,7 @@ const CreateEvent = () => {
         const { events } = cache.readQuery({ query: QUERY_EVENTS });
         cache.writeQuery({
           query: QUERY_EVENTS,
-          data: { thoughts: [addEvent, ...events] }
+          data: { events: [addEvent, ...events] }
         });
       } catch (e) {
         console.error(e);
@@ -33,7 +33,7 @@ const CreateEvent = () => {
     try {
       // add event to database
       await addEvent({
-        variables: { eventText }
+        variables: { eventData }
       });
 
       // clear form value
