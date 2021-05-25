@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { Navbar, Nav } from 'react-bootstrap';
 
@@ -10,11 +9,11 @@ const Header = () => {
     };
 
     return(
-        <Navbar expand="lg">
+        <Navbar variant='dark' expand="lg" className='d-flex justify-content-between p-3'>
             <Navbar.Brand href="#home">Project Gaia</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
+            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+                <Nav>
                     <Nav.Link href="/profile">Profile</Nav.Link>
                     <Nav.Link href="/" onClick={logout}>Logout</Nav.Link>
                     <Nav.Link href="/login">Login</Nav.Link>
