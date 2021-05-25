@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/einalem4/project-gaia#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "if-env": "^1.0.4"
   },
   "devDependencies": {

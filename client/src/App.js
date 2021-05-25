@@ -5,6 +5,11 @@ import ApolloClient from 'apollo-boost';
 import Header from './components/Header';
 import Home from './pages/Home';
 import CreateEvent from './pages/CreateEvent';
+<<<<<<< HEAD
+=======
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+>>>>>>> be546c6d469d07ffb29649bfcf4755b506b3a38d
 
 const client = new ApolloClient({
   request: operation => {
@@ -29,6 +34,8 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/create-event" component={CreateEvent} />
+              <Route exact path ='/login' component={Login} />
+              <Route exact path ='/signup' component={SignUp} />
             </Switch>
           </main>
         </div>
