@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: '../.env' });
 
 // should move secret, but not sure where to implement
-const secret = process.env.SECRET_KEY;
+const secret = "supersecret!";
 const expiration = '2h';
 
 module.exports = {
