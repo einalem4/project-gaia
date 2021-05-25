@@ -52,7 +52,7 @@ const CreateEvent = () => {
           <Form.Control onChange={handleChange} type="text" placeholder="Enter Event Name" />
         </Form.Group>
         <Form.Group>
-          <Form.Label for="date">Date</Form.Label>
+          <Form.Label>Date</Form.Label>
           <Form.Control
             type="date"
             name="date"
@@ -60,7 +60,7 @@ const CreateEvent = () => {
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label for="time">Time</Form.Label>
+          <Form.Label>Time</Form.Label>
           <Form.Control
             type="time"
             name="time"
@@ -144,8 +144,12 @@ const CreateEvent = () => {
             <Form.Label>Zip</Form.Label>
             <Form.Control onChange={handleChange} placeholder="Zip" maxLength="5" />
           </Form.Group>
+          <Form.Group controlId="Form.ControlTextarea1">
+            <Form.Label>Event Description</Form.Label>
+            <Form.Control placeholder="Tell us about your event" as="textarea" rows={8} />
+          </Form.Group>
         </Form.Row>
-        <Button variant="primary" type="submit">
+        <Button className="create-event-btn" type="submit">
           Create Event
       </Button>
       </Form>
