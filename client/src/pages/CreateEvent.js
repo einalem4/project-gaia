@@ -3,6 +3,8 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_EVENT } from '../utils/mutations';
 import { QUERY_EVENTS } from '../utils/queries';
 import { Button, Form, Col } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreateEvent = () => {
   const [eventData, setText] = useState('');
@@ -45,17 +47,17 @@ const CreateEvent = () => {
 
 
   return (
+    <div className="container">
     <Form onSubmit={handleFormSubmit}>
       <Form.Group as={Col} controlId="formGridEvent">
         <Form.Label>Event Name</Form.Label>
         <Form.Control onChange={handleChange} type="text" placeholder="Enter Event Name" />
       </Form.Group>
-
       <Form.Group controlId="formGridAddress1">
         <Form.Label>Address</Form.Label>
         <Form.Control onChange={handleChange} placeholder="Address 1" />
       </Form.Group>
-
+   <DatePicker/>
       <Form.Group controlId="formGridAddress2">
         <Form.Label>Address 2</Form.Label>
         <Form.Control onChange={handleChange} placeholder="Address 2" />
@@ -134,6 +136,7 @@ const CreateEvent = () => {
         Create Event
       </Button>
     </Form>
+    </div>
   );
 }
 
