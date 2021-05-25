@@ -40,7 +40,7 @@ const Signup =() => {
 
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+        <div className="form-group">
           <label htmlFor="username">Username:</label>
           <input
             placeholder="Username"
@@ -51,7 +51,7 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
             placeholder="youremail@test.com"
@@ -62,7 +62,7 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="form-group">
           <label htmlFor="password">Password:</label>
           <input
             placeholder="******"
