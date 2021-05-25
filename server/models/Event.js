@@ -5,9 +5,7 @@ const eventSchema = new Schema(
   {
     eventText: {
       type: String,
-      required: 'You need to create a thought!',
-      minlength: 1,
-      maxlength: 280
+      required: 'You need to create an event!',
     },
     createdAt: {
       type: Date,
