@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import { Navbar, Nav } from 'react-bootstrap';
 
 const Header = () => {
     const logout = event => {
@@ -9,20 +10,18 @@ const Header = () => {
     };
 
     return(
-        <header className='w-100 flex-row justify-space-between align-center'>
-            <Link to="/">
-                <h1 id='logo'>Project Gaia</h1>
-            </Link>
-
-            <nav className="w-25 flex-row justify-space-between text-center">
-                <Link to="/profile">Profile</Link>
-                <a href="/" onClick={logout}>
-                    Logout
-                </a>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link>
-            </nav>
-        </header>
+        <Navbar expand="lg">
+            <Navbar.Brand href="#home">Project Gaia</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    <Nav.Link href="/profile">Profile</Nav.Link>
+                    <Nav.Link href="/" onClick={logout}>Logout</Nav.Link>
+                    <Nav.Link href="/login">Login</Nav.Link>
+                    <Nav.Link href="/signup">Signup</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     );
 };
 
