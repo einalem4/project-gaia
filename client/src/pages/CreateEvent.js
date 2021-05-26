@@ -47,7 +47,7 @@ const CreateEvent = () => {
   return (
     <Container>
       <Jumbotron fluid>
-        <div div style={{ textAlign: "center" }}>
+        <div classnName="text-center">
           <h1 >Create Event</h1>
           <p>
             Fill in the information below to let everyone know you are hosting a clean up!
