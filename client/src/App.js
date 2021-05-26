@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import CreateEvent from './pages/CreateEvent';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Event from './components/Event/index';
 
 const client = new ApolloClient({
   request: operation => {
@@ -33,6 +34,7 @@ function App() {
               <Route exact path="/create-event" component={CreateEvent} />
               <Route exact path ='/login' component={Login} />
               <Route exact path ='/signup' component={SignUp} />
+              <Route exact path ='/event' component={Event} />
             </Switch>
           </main>
         </div>
