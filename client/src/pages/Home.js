@@ -1,19 +1,23 @@
 import React from 'react';
+import { Button, Container, FormControl, InputGroup, Jumbotron } from 'react-bootstrap';
 
 const Home = () => {
     return(
-        <section id='search' className='flex-row justify-center align-center'>
-            <div>
+        <Jumbotron>
+            <Container className='search-container d-flex flex-column justify-content-center' fluid>
                 <h2>cleaning the world,<br /> one community at a time</h2>
                 <p>Find a community cleanup near you</p>
-                {/* <Form>
-                    <Form.Field>
-                        <label className='none'>Search Zipcode</label>
-                        <input placeholder='Search by Zipcode' />
-                    </Form.Field>
-                </Form> */}
-            </div>
-        </section>
+                <InputGroup className='d-flex justify-content-center'>
+                    <FormControl
+                        placeholder="Enter Zipcode to find events near you"
+                        aria-label="Search by Zipcode"
+                    />
+                    <InputGroup.Append>
+                        <Button variant='secondary'>Search</Button>
+                    </InputGroup.Append>
+                </InputGroup>
+            </Container>
+        </Jumbotron>
     );
 };
 
