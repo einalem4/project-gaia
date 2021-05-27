@@ -25,6 +25,8 @@ const typeDefs = gql`
     type Comment {
         _id: ID
         commentText: String
+        username: String
+        createdAt: String
     }
 
     type Query {

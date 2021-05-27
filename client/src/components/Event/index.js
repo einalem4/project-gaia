@@ -1,21 +1,31 @@
 import { useMutation } from '@apollo/client';
-import React from 'react';
+import React, {useState} from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
+import { ADD_COMMENT} from '../../utils/mutations';
+// import Auth from '../../utils/auth'
+
 
 
 function Event() {
-    // const {comment} = useMutation(ADD_COMMENT);
+    const [commentText, setCommentText] = useState('');
+    const [comment, {error}] = useMutation(ADD_COMMENT);
 
-    // const handleFormSubmit = async event => {
-    //     event.preventDefault();
-    //     try {
-    //         const mutationResponse = await comment ({variables: {username, commentText}})
-    //         const token = mutationResponse.data.comment.token;
-    //         Auth.comment(token);
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // };
+    const handleChange = event => {
+        if (event.target.value.length > 0){
+            setCommentText(event.target.value)
+        }
+        console.log(commentText)
+    }
+
+    const handleFormSubmit = async event => {
+        event.preventDefault();
+        try {
+            await comment ({variables: {commentText}})
+            setCommentText('')
+        } catch (e) {
+            console.log(e)
+        }
+    };
     return (
         <>
         <Card style={{ width: '18rem' }}>
@@ -32,15 +42,16 @@ function Event() {
                <Button variant="success">RSVP</Button>
             </Card.Body>
         </Card>
-        
-        <Form>
+
+        <Form onSubmit={handleFormSubmit}>
         <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label></Form.Label>
-        <Form.Control as="textarea" rows={3} placeholder='Leave Comment Here'/>
+        <Form.Control onChange={handleChange} as="textarea" rows={3} placeholder='Leave Comment Here'/>
         <br/>
         <Button variant='primary' type='submit'>Post Comment</Button>
         </Form.Group>
         </Form>
+    
         </>
     )
 }
