@@ -1,8 +1,21 @@
+import { useMutation } from '@apollo/client';
 import React from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 
 
 function Event() {
+    // const {comment} = useMutation(ADD_COMMENT);
+
+    // const handleFormSubmit = async event => {
+    //     event.preventDefault();
+    //     try {
+    //         const mutationResponse = await comment ({variables: {username, commentText}})
+    //         const token = mutationResponse.data.comment.token;
+    //         Auth.comment(token);
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // };
     return (
         <>
         <Card style={{ width: '18rem' }}>
@@ -25,7 +38,7 @@ function Event() {
         <Form.Label></Form.Label>
         <Form.Control as="textarea" rows={3} placeholder='Leave Comment Here'/>
         <br/>
-        <Button variant='primary'>Post Comment</Button>
+        <Button variant='primary' type='submit'>Post Comment</Button>
         </Form.Group>
         </Form>
         </>

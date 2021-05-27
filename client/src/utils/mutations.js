@@ -34,3 +34,14 @@ export const ADD_EVENT = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = gql`
+mutation addComment($commentText: String!) {
+  addComment(commentText: $commentText) {
+      _id
+      username
+      commentText
+      createdAt
+    }
+  }
+`;

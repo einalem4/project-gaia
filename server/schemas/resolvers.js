@@ -1,4 +1,4 @@
-const { User, Event } = require('../models');
+const { User, Event, Comment } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -47,7 +47,19 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        
+        addComment: async (parent, args, context) => {
+            if (context.user) {
+              const comment = await Comment.create({ ...args, username: context.user.username });
+      
+              await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $push: { comments: comment._id } },
+                { new: true }
+              );
+      
+              return comment;
+            }
+        },
         addEvent: async (parent, args, context) => {
             if (context.user) {
                 const event = await Event.create({ ...args, username: context.user.username });

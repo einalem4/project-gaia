@@ -22,6 +22,11 @@ const typeDefs = gql`
         username: String
       }
 
+    type Comment {
+        _id: ID
+        commentText: String
+    }
+
     type Query {
         me: User
         events(username: String): [Event]
@@ -32,6 +37,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addEvent(eventData: String!): Event
+        addComment(commentText: String!): Comment
 
     }
 `;
