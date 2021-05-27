@@ -15,6 +15,17 @@ const typeDefs = gql`
         eventCount: Int
     }
 
+    input EventInput {
+        name: String!
+        date: String!
+        time: String!
+        address1: String!
+        city: String!
+        state: String!
+        zip: String!
+        description: String!
+      }
+
     type Event {
         _id: ID
         eventData: String
@@ -26,14 +37,13 @@ const typeDefs = gql`
         me: User
         events(username: String): [Event]
         event(_id: ID!): Event
-    }
+      }
 
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addEvent(eventData: String!, name: String!, date: String!, time: String!, address1: String!, city: String!, state: String!, zip: String!, description: String!): Event
-
-    }
+        addEvent(eventData: EventInput): Event
+      }
 `;
 
 // export the typeDefs

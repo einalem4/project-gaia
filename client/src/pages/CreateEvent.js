@@ -33,7 +33,7 @@ const CreateEvent = () => {
     try {
       // add event to database
       await addEvent({
-        variables: { eventData : eventData }
+        variables: { eventData }
       });
 
       // clear form value

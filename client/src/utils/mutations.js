@@ -25,7 +25,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_EVENT = gql`
-  mutation addEvent($eventData: String!, $name: String!, $date: String!, $time: String!, $address1: String!, $city: String!, $state: String!, $zip: String!, $description: String!) {
+  mutation addEvent($eventData: EventInput!) {
     addEvent(eventData: $eventData) {
       _id
       eventData
