@@ -5,7 +5,7 @@ import { QUERY_EVENTS } from '../utils/queries';
 import { Button, Form, Col, Container, Jumbotron } from 'react-bootstrap';
 
 const CreateEvent = () => {
-  const [eventData, setText] = useState('');
+  const [eventData, setEventData] = useState({ name: '', date: '', time: '', address1: '', address2: '', city: '', state: '', zip: '', description: '' });
   const [addEvent] = useMutation(ADD_EVENT, {
     update(cache, { data: { addEvent } }) {
       try {
@@ -21,10 +21,9 @@ const CreateEvent = () => {
     }
   });
 
-  const handleChange = (event, date) => {
-    if (event.target.value.length <= 280) {
-      setText(event.target.value);
-    }
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setEventData({ ...eventData, [name]: value })
   };
 
   const handleFormSubmit = async event => {
@@ -37,7 +36,7 @@ const CreateEvent = () => {
       });
 
       // clear form value
-      setText('');
+      setEventData('');
     } catch (e) {
       console.error(e);
     }
@@ -55,7 +54,7 @@ const CreateEvent = () => {
         </div>
         <Form onSubmit={handleFormSubmit}>
           {/* Event Name */}
-          <Form.Group as={Col} controlId="formGridEvent">
+          <Form.Group as={Col} id="name">
             <Form.Label>Event Name</Form.Label>
             <Form.Control onChange={handleChange} type="text" placeholder="Enter Event Name" />
           </Form.Group>
@@ -81,24 +80,24 @@ const CreateEvent = () => {
           </Form.Group>
 
           {/* Address */}
-          <Form.Group as={Col} controlId="formGridAddress1">
+          <Form.Group as={Col} id="address1">
             <Form.Label>Address</Form.Label>
             <Form.Control onChange={handleChange} placeholder="Address 1" />
           </Form.Group>
-          <Form.Group controlId="formGridAddress2">
+          <Form.Group id="address2">
             <Form.Label>Address 2</Form.Label>
             <Form.Control onChange={handleChange} placeholder="Address 2" />
           </Form.Group>
 
           {/* City */}
           <Form.Row>
-            <Form.Group as={Col} controlId="formGridCity">
+            <Form.Group as={Col} id="city">
               <Form.Label>City</Form.Label>
               <Form.Control onChange={handleChange} placeholder="City" />
             </Form.Group>
 
             {/* State*/}
-            <Form.Group as={Col} controlId="formGridState">
+            <Form.Group as={Col} id="state">
               <Form.Label>State</Form.Label>
               <Form.Control onChange={handleChange} as="select" defaultValue="State">
                 <option>State</option>
@@ -157,15 +156,15 @@ const CreateEvent = () => {
             </Form.Group>
 
             {/* Zip */}
-            <Form.Group as={Col} controlId="formGridZip" >
+            <Form.Group as={Col} id="zip" >
               <Form.Label>Zip</Form.Label>
               <Form.Control onChange={handleChange} placeholder="Zip" maxLength="5" />
             </Form.Group>
 
             {/* Event Description */}
-            <Form.Group controlId="Form.ControlTextarea1">
+            <Form.Group id="description">
               <Form.Label>Event Description</Form.Label>
-              <Form.Control placeholder="Tell us about your event" as="textarea" rows={8} />
+              <Form.Control onChange={handleChange} placeholder="Tell us about your event" as="textarea" rows={8} />
             </Form.Group>
           </Form.Row>
           <Button className="create-event-btn" type="submit">

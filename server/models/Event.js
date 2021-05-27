@@ -16,6 +16,42 @@ const eventSchema = new Schema(
       type: String,
       required: true
     },
+    name: {
+      type: String,
+      required: true
+    },
+    date: {
+      type: String,
+      required: true
+    },
+    time: {
+      type: String,
+      required: true
+    },
+    address1: {
+      type: String,
+      required: true
+    },
+    address2: {
+      type: String,
+      required: true
+    },
+    city: {
+      type: String,
+      required: true
+    },
+    state: {
+      type: String,
+      required: true
+    },
+    zip: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
   },
   {
     toJSON: {
