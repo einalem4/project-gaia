@@ -5,7 +5,7 @@ import { QUERY_EVENTS } from '../utils/queries';
 import { Button, Form, Col, Container, Jumbotron } from 'react-bootstrap';
 
 const CreateEvent = () => {
-  const [eventData, setEventData] = useState({ name: '', date: '', time: '', address1: '', address2: '', city: '', state: '', zip: '', description: '' });
+  const [eventData, setEventData] = useState({ name: '', date: '', time: '', address1: '', city: '', state: '', zip: '', description: '' });
   const [addEvent] = useMutation(ADD_EVENT, {
     update(cache, { data: { addEvent } }) {
       try {
