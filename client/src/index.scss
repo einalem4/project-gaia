@@ -4,14 +4,27 @@ $secondary: #46b04d;
 $success: #46b04d;
 $warning: #e9c46a;
 $dark-blue: #0e6499;
+$light-grey: rgb(235,235, 235);
+$dark-grey: rgb(50, 50, 50);
 
 $font-family-base: 'dolly-new', serif;
 
 $navbar-brand-font-size: 2rem;
 $nav-link-font-size: 1.25rem;
 
-// stays at bottom
+// variables go above this import
+// custom styles go below this import
 @import "~bootstrap/scss/bootstrap";
+
+body {
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+  font-weight: 700;
+  text-transform: capitalize;
+}
 
 .btn {
   color: white;
@@ -31,58 +44,172 @@ $nav-link-font-size: 1.25rem;
   width: 100%;
   height: 70vh;
   text-align: center;
-  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/images/woods-cleanup.jpg');
-  background-position: center;
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('./assets/images/woods-cleanup.jpg');
+  background-position: top 43% right 22%;
   color: white;
+
+  div {
+    background-color: $light-grey;
+    color: $dark-grey;
+    border-radius: 20px;
+    padding: 1.5rem;
+
+    h2 {
+      color: $dark-grey;
+      font-size: 1.5rem;
+      line-height: 1.25;
+      margin: 5px 0;
+    }
   
-  h2 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.25;
-    text-transform: capitalize;
-    margin: 5px 0;
-  }
+    p {
+      font-size: 1rem;
+    }
 
-  p {
-    font-size: 2rem;
-  }
-}
+    .input-group {
+      flex-direction: column;
+      padding: 0;
+      
+      .form-control {
+        width: 100%;
+        border-radius: 0.25rem;
+      }
 
-.input-group {
-  .btn {
-    width: 100px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+      .input-group-append {
+        padding: 0.5rem 0;
+
+        .btn {
+          width: 100%;
+        }
+      }
+    }
   }
 }
 
 #about {
   width: 100%;
+  height: 500px;
   text-align: center;
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/images/beach-plastic.jpg');
+  background-position: center;
+
+  h2 {
+    font-size: 2rem;
+    line-height: 1.25;
+    margin: 5px 0;
+  }
+
+  p {
+    font-size: 1rem;
+    width: 100%;
+    color: white;
+    margin: 0 auto; 
+  }
+}
+
+.social-icons {
+  width: 20%;
 }
 
 @media (min-width: 576px) {
-  .input-group {
-    width: 80%;
-    margin: 0 auto;
+  #search {
+    div {
+      padding: 2.5rem;
+
+      h2 {
+        font-size: 2.25rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  #about {
+    h2 {
+      font-size: 2.25rem;
+    }
+
+    p {
+      font-size: 1.15rem;
+    }
   }
 }
 
 @media (min-width: 768px) {
-  .input-group {
-    width: 50%;
+  #search {
+    background-position: center;
+
+    div {
+      .input-group {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      
+        .form-control {
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+        }
+  
+        .input-group-append {
+          padding: 0;
+  
+          .btn {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+        }
+      }  
+    }
+  }
+
+  #about {
+    p {
+      width: 600px;
+    }
   }
 }
 
-@media (min-width: 992px) {
-  .input-group {
-    width: 40%;
-  }
-}
+@media (min-width: 992px) { 
+  #search {
+    div {
+      padding: 3rem;
 
-@media (min-width: 1200px) { 
-  .input-group {
-    width: 30%;
+      h2 {
+        font-size: 3.5rem;
+      }
+
+      p {
+        font-size: 2rem;
+      }
+
+      .input-group {
+        width: 600px;
+        margin: 0 auto;
+      
+        .form-control {
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+        }
+  
+        .input-group-append {
+          padding: 0;
+  
+          .btn {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+        }
+      }  
+    }
+  }
+
+  #about {
+    h2 {
+      font-size: 3.5rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
   }
 }
