@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_EVENT } from '../utils/mutations';
-import { QUERY_EVENTS } from '../utils/queries';
 import { Button, Form, Col, Container, Jumbotron } from 'react-bootstrap';
 
 const CreateEvent = () => {
-  const [eventData, setEventData] = useState({ name: '', date: '', time: '', address1: '', city: '', state: '', zip: '', description: '' });
-  const [addEvent] = useMutation(ADD_EVENT, {
-    update(cache, { data: { addEvent } }) {
-      try {
-        // could potentially not exist yet, so wrap in a try...catch
-        const { events } = cache.readQuery({ query: QUERY_EVENTS });
-        cache.writeQuery({
-          query: QUERY_EVENTS,
-          data: { events: [addEvent, ...events] }
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    }
-  });
+  const defaultState = {
+    name: '',
+    date: '',
+    time: '',
+    address1: '',
+    city: '',
+    state: '',
+    zip: '',
+    description: ''
+  };
+  const [eventData, setEventData] = useState(defaultState);
+  setEventData(defaultState);
+  const [addEvent] = useMutation(ADD_EVENT);
 
   const handleChange = (event) => {
     const { name, value } = event.target

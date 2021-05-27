@@ -26,11 +26,17 @@ const typeDefs = gql`
         description: String!
       }
 
-    type Event {
+      type Event {
         _id: ID
-        eventData: String
-        createdAt: String
-        username: String
+        name: String!
+        date: String!
+        time: String!
+        address1: String!
+        city: String!
+        state: String!
+        zip: String!
+        description: String!
+        createdAt: String!
       }
 
     type Query {
