@@ -84,10 +84,6 @@ const CreateEvent = () => {
             <Form.Label>Address</Form.Label>
             <Form.Control onChange={handleChange} placeholder="Address 1" />
           </Form.Group>
-          <Form.Group id="address2">
-            <Form.Label>Address 2</Form.Label>
-            <Form.Control onChange={handleChange} placeholder="Address 2" />
-          </Form.Group>
 
           {/* City */}
           <Form.Row>
