@@ -3,10 +3,6 @@ const dateFormat = require('../utils/dateFormat');
 
 const eventSchema = new Schema(
   {
-    eventText: {
-      type: String,
-      required: 'You need to create an event!',
-    },
     createdAt: {
       type: Date,
       default: Date.now,
