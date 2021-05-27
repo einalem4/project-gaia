@@ -28,11 +28,12 @@ const CreateEvent = () => {
 
   const handleFormSubmit = async event => {
     event.preventDefault();
+    console.log(eventData);
 
     try {
       // add event to database
       await addEvent({
-        variables: { eventData }
+        variables: { eventData : eventData }
       });
 
       // clear form value
@@ -54,15 +55,16 @@ const CreateEvent = () => {
         </div>
         <Form onSubmit={handleFormSubmit}>
           {/* Event Name */}
-          <Form.Group as={Col} id="name">
+          <Form.Group as={Col} >
             <Form.Label>Event Name</Form.Label>
-            <Form.Control onChange={handleChange} type="text" placeholder="Enter Event Name" />
+            <Form.Control name="name" onChange={handleChange} type="text" placeholder="Event Name" />
           </Form.Group>
 
           {/* Date Picker */}
           <Form.Group>
             <Form.Label>Date</Form.Label>
             <Form.Control
+              onChange={handleChange}
               type="date"
               name="date"
               id="date"
@@ -73,6 +75,7 @@ const CreateEvent = () => {
           <Form.Group>
             <Form.Label>Time</Form.Label>
             <Form.Control
+              onChange={handleChange}
               type="time"
               name="time"
               id="time"
@@ -80,22 +83,22 @@ const CreateEvent = () => {
           </Form.Group>
 
           {/* Address */}
-          <Form.Group as={Col} id="address1">
+          <Form.Group as={Col}>
             <Form.Label>Address</Form.Label>
-            <Form.Control onChange={handleChange} placeholder="Address 1" />
+            <Form.Control name="address1" onChange={handleChange} placeholder="Address 1" />
           </Form.Group>
 
           {/* City */}
           <Form.Row>
-            <Form.Group as={Col} id="city">
+            <Form.Group as={Col}>
               <Form.Label>City</Form.Label>
-              <Form.Control onChange={handleChange} placeholder="City" />
+              <Form.Control name="city" onChange={handleChange} placeholder="City" />
             </Form.Group>
 
             {/* State*/}
-            <Form.Group as={Col} id="state">
+            <Form.Group as={Col}>
               <Form.Label>State</Form.Label>
-              <Form.Control onChange={handleChange} as="select" defaultValue="State">
+              <Form.Control name="state" onChange={handleChange} as="select" defaultValue="State">
                 <option>State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -152,15 +155,15 @@ const CreateEvent = () => {
             </Form.Group>
 
             {/* Zip */}
-            <Form.Group as={Col} id="zip" >
+            <Form.Group as={Col}>
               <Form.Label>Zip</Form.Label>
-              <Form.Control onChange={handleChange} placeholder="Zip" maxLength="5" />
+              <Form.Control name="zip" onChange={handleChange} placeholder="Zip" maxLength="5" />
             </Form.Group>
 
             {/* Event Description */}
-            <Form.Group id="description">
+            <Form.Group>
               <Form.Label>Event Description</Form.Label>
-              <Form.Control onChange={handleChange} placeholder="Tell us about your event" as="textarea" rows={8} />
+              <Form.Control name="description" onChange={handleChange} placeholder="Tell us about your event" as="textarea" rows={8} />
             </Form.Group>
           </Form.Row>
           <Button className="create-event-btn" type="submit">
