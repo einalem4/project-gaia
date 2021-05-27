@@ -10,6 +10,13 @@ $font-family-base: 'dolly-new', serif;
 $navbar-brand-font-size: 2rem;
 $nav-link-font-size: 1.25rem;
 
+// stays at bottom
+@import "~bootstrap/scss/bootstrap";
+
+.btn {
+  color: white;
+}
+
 .navbar {
   background-color: $dark-blue;
 }
@@ -19,170 +26,50 @@ $nav-link-font-size: 1.25rem;
   color: white;
   text-align: center;
 }
-// * {
-//   box-sizing: border-box;
-//   margin: 0;
-//   padding: 0;
-// }
 
-// html,
-// body {
-//   min-height: 100%;
-// }
+.search-container {
+  width: 100%;
+  height: 70vh;
+  text-align: center;
 
-// html {
-//   font-size: 16px;
-// }
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/images/woods-cleanup.jpg');
+  background-position: center;
+  color: white;
+  
+  h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-transform: capitalize;
+    margin: 5px 0;
+  }
 
-// body {
-//   width: 100vw;
-//   overflow-x: hidden;
-//   color: white;
-// }
+  p {
+    font-size: 2rem;
+  }
+}
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   font-family: 'dolly-new', serif;
-//   font-weight: 700;
-//   margin: 5px 0;
-//   line-height: 1.25;
-//   text-transform: capitalize;
-// }
+@media (min-width: 576px) {
+  .input-group {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
 
-// h1 {
-//   color: white;
-//   font-family: 'lust', serif;
-// }
+@media (min-width: 768px) {
+  .input-group {
+    width: 50%;
+  }
+}
 
-// h2 {
-//   font-size: 4rem;
-// }
+@media (min-width: 992px) {
+  .input-group {
+    width: 40%;
+  }
+}
 
-// a {
-//   text-decoration: none;
-// }
-
-// header {
-//   padding: 1rem;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   z-index: 9999;
-//   background-color: var(--dark-blue);
-// }
-
-// nav a {
-//   font-family: 'dolly-new', serif;
-//   font-weight: 400;
-//   font-size: 1.25rem;
-//   text-transform: uppercase;
-//   color: white;
-// }
-
-// #logo {
-//   text-transform: initial;
-// }
-
-// #search {
-//   height: 80vh;
-//   background-image: url('./assets/images/woods-cleanup.jpg');
-//   background-position: center;
-//   text-align: center;
-// }
-
-// #search p {
-//   font-size: 2rem;
-// }
-
-// /* #search::after {
-//   content: "";
-//   height: 100%;
-//   width: 100%;
-//   background: #000;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   opacity: 1;
-//   transition: .8s;
-//   z-index: 1;
-// } */
-
-// .none {
-//   display: none;
-// }
-
-// /* HEIGHT / WIDTH UTILS */
-// .w-100 {
-//   width: 100%;
-// }
-
-// .w-75 {
-//   width: 75%;
-// }
-
-// .w-50 {
-//   width: 50%;
-// }
-
-// .w-25 {
-//   width: 25%;
-// }
-
-// .min-100-vh {
-//   min-height: 100vh;
-// }
-
-// .min-100-vw {
-//   min-width: 100vw;
-// }
-
-// /* FLEX CONTENT */
-// .flex-row {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
-
-// .flex-column {
-//   display: flex;
-//   flex-direction: column;
-//   flex-wrap: wrap;
-// }
-
-// .justify-space-between {
-//   justify-content: space-between;
-// }
-
-// .justify-space-around {
-//   justify-content: space-around;
-// }
-
-// .justify-flex-start {
-//   justify-content: flex-start;
-// }
-
-// .justify-flex-end {
-//   justify-content: flex-end;
-// }
-
-// .justify-center {
-//   justify-content: center;
-// }
-
-// .align-stretch {
-//   align-items: stretch;
-// }
-
-// .align-end {
-//   align-items: flex-end;
-// }
-
-// .align-center {
-//   align-items: center;
-// }
-
-// stays at bottom
-@import "~bootstrap/scss/bootstrap";
+@media (min-width: 1200px) { 
+  .input-group {
+    width: 30%;
+  }
+}
