@@ -14,7 +14,7 @@ const Search = () => {
                             aria-label="Search by Zipcode"
                         />
                         <InputGroup.Append>
-                            <Button variant='secondary' className='search-btn'>Search</Button>
+                            <Button variant='secondary' className='search-btn' type='submit'>Search</Button>
                         </InputGroup.Append>
                     </InputGroup>
                 </div>

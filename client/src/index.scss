@@ -32,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar {
   background-color: $dark-blue;
+  z-index: 9999;
 }
 
 .navbar-brand {
@@ -46,6 +47,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('./assets/images/woods-cleanup.jpg');
   background-position: top 43% right 22%;
+  background-size: cover;
   color: white;
 
   div {
@@ -91,6 +93,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/images/beach-plastic.jpg');
   background-position: center;
+  background-size: cover;
 
   h2 {
     font-size: 2rem;
@@ -154,6 +157,7 @@ h1, h2, h3, h4, h5, h6 {
           padding: 0;
   
           .btn {
+            width: 100px;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
           }
@@ -185,20 +189,7 @@ h1, h2, h3, h4, h5, h6 {
       .input-group {
         width: 600px;
         margin: 0 auto;
-      
-        .form-control {
-          border-top-right-radius: 0px;
-          border-bottom-right-radius: 0px;
-        }
   
-        .input-group-append {
-          padding: 0;
-  
-          .btn {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-          }
-        }
       }  
     }
   }
