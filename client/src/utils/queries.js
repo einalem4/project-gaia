@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const QUERY_EVENTS = gql`
-  query events($username: String) {
-    events(username: $username) {
+  query events($eventData: String!, $name: String!, $date: String!, $time: String!, $address1: String!, $city: String!, $state: String!, $zip: String!, $description: String!) {
+    events(eventData: $eventData) {
       _id
       eventData
       createdAt
@@ -15,7 +15,6 @@ export const QUERY_EVENT = gql`
   query event($id: ID!) {
     event(_id: $id) {
       _id
-      eventData
       createdAt
       username
     }

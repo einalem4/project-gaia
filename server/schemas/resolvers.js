@@ -47,23 +47,27 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        
+
         addEvent: async (parent, args, context) => {
             if (context.user) {
-                const event = await Event.create({ ...args, username: context.user.username });
-
-                await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    { $push: { events: event._id } },
-                    { new: true }
-                );
-
-                return event;
+                try {
+                    await Event.create({ ...args.eventData, username: context.user.username })
+                        .then(event => {
+                            User.findByIdAndUpdate(
+                                { _id: context.user._id },
+                                { $push: { events: event._id } },
+                                { new: true }
+                            );
+                            return event;
+                        });
+                } catch (err) {
+                    console.log(err);
+                }
+            } else {
+                throw new AuthenticationError('You need to be logged in!');
             }
-
-            throw new AuthenticationError('You need to be logged in!');
-        },
+        }
     }
-}
+};
 
 module.exports = resolvers;
