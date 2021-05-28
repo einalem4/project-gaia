@@ -24,7 +24,6 @@ const CreateEvent = () => {
 
   const handleFormSubmit = async event => {
     event.preventDefault();
-    console.log(eventData);
 
     try {
       // add event to database

@@ -28,9 +28,7 @@ export const ADD_EVENT = gql`
   mutation addEvent($eventData: EventInput!) {
     addEvent(eventData: $eventData) {
       _id
-      eventData
       createdAt
-      username
       name
       date
       time
