@@ -15,7 +15,6 @@ export const QUERY_EVENT = gql`
   query event($id: ID!) {
     event(_id: $id) {
       _id
-      eventData
       createdAt
       username
     }

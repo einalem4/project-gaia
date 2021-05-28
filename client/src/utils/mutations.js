@@ -31,6 +31,14 @@ export const ADD_EVENT = gql`
       eventData
       createdAt
       username
+      name
+      date
+      time
+      address1
+      city
+      state
+      zip
+      description
     }
   }
 `;

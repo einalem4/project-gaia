@@ -15,7 +15,6 @@ const CreateEvent = () => {
     description: ''
   };
   const [eventData, setEventData] = useState(defaultState);
-  setEventData(defaultState);
   const [addEvent] = useMutation(ADD_EVENT);
 
   const handleChange = (event) => {
