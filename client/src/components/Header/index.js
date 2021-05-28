@@ -10,14 +10,21 @@ const Header = () => {
 
     return(
         <Navbar variant='dark' expand="lg" className='d-flex justify-content-between p-3'>
-            <Navbar.Brand href="#home">Project Gaia</Navbar.Brand>
+            <Navbar.Brand href="/">Project Gaia</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav>
-                    <Nav.Link href="/profile">Profile</Nav.Link>
-                    <Nav.Link href="/" onClick={logout}>Logout</Nav.Link>
-                    <Nav.Link href="/login">Login</Nav.Link>
-                    <Nav.Link href="/signup">Signup</Nav.Link>
+                    {Auth.loggedIn() ? (
+                        <>
+                            <Nav.Link href="/profile">Profile</Nav.Link>
+                            <Nav.Link href="/" onClick={logout}>Logout</Nav.Link>
+                        </>
+                    ) : (
+                        <>
+                            <Nav.Link href="/login">Login</Nav.Link>
+                            <Nav.Link href="/signup">Signup</Nav.Link>
+                        </>
+                    )}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
