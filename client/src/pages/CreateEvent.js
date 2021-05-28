@@ -40,51 +40,49 @@ const CreateEvent = () => {
 
 
   return (
-    <Container>
-      <Jumbotron fluid>
-        <div style={{ textAlign: "center" }}>
+    <Container className='mb-5'>
+      <Jumbotron id="create" fluid>
+        <div>
           <h1 >Create Event</h1>
           <p>
             Fill in the information below to let everyone know you are hosting a clean up!
         </p>
-        </div>
-        <Form onSubmit={handleFormSubmit}>
-          {/* Event Name */}
-          <Form.Group as={Col} >
-            <Form.Label>Event Name</Form.Label>
-            <Form.Control name="name" onChange={handleChange} type="text" placeholder="Event Name" />
-          </Form.Group>
+          <Form onSubmit={handleFormSubmit}>
+            {/* Event Name */}
+            <Form.Group as={Col} >
+              <Form.Label>Event Name</Form.Label>
+              <Form.Control name="name" onChange={handleChange} type="text" placeholder="Event Name" />
+            </Form.Group>
 
-          {/* Date Picker */}
-          <Form.Group>
-            <Form.Label>Date</Form.Label>
-            <Form.Control
-              onChange={handleChange}
-              type="date"
-              name="date"
-              id="date"
-            />
-          </Form.Group>
+            {/* Date Picker */}
+            <Form.Group>
+              <Form.Label>Date</Form.Label>
+              <Form.Control
+                onChange={handleChange}
+                type="date"
+                name="date"
+                id="date"
+              />
+            </Form.Group>
 
-          {/* time */}
-          <Form.Group>
-            <Form.Label>Time</Form.Label>
-            <Form.Control
-              onChange={handleChange}
-              type="time"
-              name="time"
-              id="time"
-            />
-          </Form.Group>
+            {/* time */}
+            <Form.Group>
+              <Form.Label>Time</Form.Label>
+              <Form.Control
+                onChange={handleChange}
+                type="time"
+                name="time"
+                id="time"
+              />
+            </Form.Group>
 
-          {/* Address */}
-          <Form.Group as={Col}>
-            <Form.Label>Address</Form.Label>
-            <Form.Control name="address1" onChange={handleChange} placeholder="Address 1" />
-          </Form.Group>
+            {/* Address */}
+            <Form.Group as={Col}>
+              <Form.Label>Address</Form.Label>
+              <Form.Control name="address1" onChange={handleChange} placeholder="Address 1" />
+            </Form.Group>
 
-          {/* City */}
-          <Form.Row>
+            {/* City */}
             <Form.Group as={Col}>
               <Form.Label>City</Form.Label>
               <Form.Control name="city" onChange={handleChange} placeholder="City" />
@@ -160,11 +158,11 @@ const CreateEvent = () => {
               <Form.Label>Event Description</Form.Label>
               <Form.Control name="description" onChange={handleChange} placeholder="Tell us about your event" as="textarea" rows={8} />
             </Form.Group>
-          </Form.Row>
-          <Button className="create-event-btn" type="submit">
-            Create Event
+            <Button variant='secondary' type='submit' className='create-btn'>
+              Create Event
           </Button>
-        </Form>
+          </Form>
+        </div>
       </Jumbotron>
     </Container>
   );
