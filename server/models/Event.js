@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
 const eventSchema = new Schema(
@@ -24,7 +25,7 @@ const eventSchema = new Schema(
       type: String,
       required: true
     },
-    address1: {
+    address: {
       type: String,
       required: true
     },
@@ -44,6 +45,7 @@ const eventSchema = new Schema(
       type: String,
       required: true
     },
+    comments: [commentSchema]
   },
   {
     toJSON: {

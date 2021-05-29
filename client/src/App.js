@@ -7,9 +7,11 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 import CreateEvent from './pages/CreateEvent';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Results from './pages/Results';
 
 const client = new ApolloClient({
   request: operation => {
@@ -33,9 +35,13 @@ function App() {
           <main>
             <Switch>
               <Route exact path="/" component={Home} />
+              {/* <Route exact path="/profile/:username?" component={Profile} /> */}
+              <Route exact path="/profile" component={Profile} />
               <Route exact path="/create-event" component={CreateEvent} />
               <Route exact path ='/login' component={Login} />
               <Route exact path ='/signup' component={SignUp} />
+              <Route exact path ='/results' component={Results} />
+              {/* <Route exact path ='/results/:address' component={Results} /> */}
             </Switch>
           </main>
           <Footer />
