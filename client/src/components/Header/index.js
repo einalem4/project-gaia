@@ -17,6 +17,7 @@ const Header = () => {
                     {Auth.loggedIn() ? (
                         <>
                             <Nav.Link href="/profile">Profile</Nav.Link>
+                            <Nav.Link href="/create-event">Create Event</Nav.Link>
                             <Nav.Link href="/" onClick={logout}>Logout</Nav.Link>
                         </>
                     ) : (

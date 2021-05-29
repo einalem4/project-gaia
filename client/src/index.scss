@@ -223,9 +223,6 @@ h6 {
 
 // create event page
 #create {
-  width: 100%;
-  color: white;
-
   div {
     background-color: $light-grey;
     color: $dark-grey;
@@ -252,4 +249,10 @@ h6 {
       resize: none;
     }
   }
+}
+
+.background {
+  background-color: $primary;
+  border-radius: 50%;
+  background-position: top 500px;
 }
