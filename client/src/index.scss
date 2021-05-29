@@ -4,10 +4,10 @@ $secondary: #46b04d;
 $success: #46b04d;
 $warning: #e9c46a;
 $dark-blue: #0e6499;
-$light-grey: rgb(235,235, 235);
+$light-grey: rgb(235, 235, 235);
 $dark-grey: rgb(50, 50, 50);
 
-$font-family-base: 'dolly-new', serif;
+$font-family-base: "dolly-new", serif;
 
 $navbar-brand-font-size: 2rem;
 $nav-link-font-size: 1.25rem;
@@ -20,7 +20,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: white;
   font-weight: 700;
   text-transform: capitalize;
@@ -36,9 +41,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-brand {
-  font-family: 'lust', serif;
+  font-family: "lust", serif;
   color: white;
   text-align: center;
+}
+
+#create {
+  width: 100%;
+  color: white;
+
+  div {
+    background-color: $light-grey;
+    color: $dark-grey;
+    border-radius: 20px;
+    padding: 1.5rem;
+
+    h1 {
+      color: $dark-blue;
+      line-height: 1.25;
+      margin: 5px 0;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .create-btn {
+      width: 100%;
+    }
+  }
 }
 
 #search {
