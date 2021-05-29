@@ -5,7 +5,7 @@ import { QUERY_USER_EVENTS } from '../utils/queries';
 import { Button, Form, Col, Container, Jumbotron } from 'react-bootstrap';
 
 const CreateEvent = () => {
-  const [eventData, setText] = useState('');
+  const [input, setInput] = useState('');
   const [addEvent] = useMutation(ADD_EVENT, {
     update(cache, { data: { addEvent } }) {
       try {
@@ -23,7 +23,7 @@ const CreateEvent = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-    setEventData({ ...eventData, [name]: value })
+    setInput({ ...input, [name]: value })
   };
 
   const handleFormSubmit = async event => {
@@ -32,11 +32,11 @@ const CreateEvent = () => {
     try {
       // add event to database
       await addEvent({
-        variables: { eventData }
+        variables: { input }
       });
 
       // clear form value
-      setEventData('');
+      setInput('');
     } catch (e) {
       console.error(e);
     }
