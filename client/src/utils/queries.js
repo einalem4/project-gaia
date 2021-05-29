@@ -79,7 +79,7 @@ export const QUERY_ALL_EVENTS = gql`
       name
       date
       time
-      address1
+      address
       city
       state
       zip
