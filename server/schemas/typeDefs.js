@@ -27,9 +27,9 @@ const typeDefs = gql`
         state: String!
         zip: String!
         description: String!
-    }
+      }
 
-    type Event {
+      type Event {
         _id: ID
         name: String!
         date: String!
