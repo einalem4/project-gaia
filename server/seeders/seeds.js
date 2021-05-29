@@ -14,8 +14,9 @@ db.once('open', async () => {
     const username = faker.internet.userName();
     const email = faker.internet.email(username);
     const password = faker.internet.password();
+    const image = faker.image.avatar();
 
-    userData.push({ username, email, password });
+    userData.push({ username, email, password, image });
   }
 
   const createdUsers = await User.collection.insertMany(userData);
@@ -57,6 +58,7 @@ db.once('open', async () => {
     const zip = faker.address.zipCode();
 
     const description = faker.lorem.sentence();
+    const image = faker.image.nature();
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username, _id: userId } = createdUsers.ops[randomUserIndex];
@@ -70,7 +72,8 @@ db.once('open', async () => {
         state,
         zip,
         description,
-        username 
+        username, 
+        image
       });
 
     const updatedUser = await User.updateOne(

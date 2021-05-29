@@ -23,7 +23,7 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 const ResultsMap = () => {
     return(
-        <div style={ {width: '100vw', height: '100vh'} }>
+        <div style={ {width: '100%', height: '100%'} }>
             <WrappedMap 
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${GOOGLE_KEY}`}
                 loadingElement={<div style={ {height: '100%'} } />} 

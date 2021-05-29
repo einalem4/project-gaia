@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, Container, Form, FormControl, InputGroup, Jumbotron } from 'react-bootstrap';
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_SERCH_EVENTS } from '../../utils/queries';
 
 const Search = () => {
     const [searchValue, setSearchValue] = useState('');
@@ -12,8 +10,8 @@ const Search = () => {
     }
 
     const handleSearchSubmit = async event => {
-        event.preventDefault();
-        return <Redirect to="/results" />;
+        // event.preventDefault();
+        <Redirect to={`/results/${searchValue}`} />
     }
 
     return(
@@ -33,7 +31,9 @@ const Search = () => {
                                 onSubmit={handleSearchSubmit}
                             />
                             <InputGroup.Append>
-                                <Button variant='secondary' className='search-btn' type='submit'>Search</Button>
+                                <Button variant='secondary' className='search-btn' type='submit'>
+                                    <Link to={`/results/${searchValue}`} style={{color: 'white', textDecoration:'none'}}>Search</Link>
+                                </Button>
                             </InputGroup.Append>
                         </InputGroup>
                     </Form>

@@ -32,7 +32,7 @@ const CreateEvent = () => {
     try {
       // add event to database
       await addEvent({
-        variables: { input }
+        variables: { input: input }
       });
 
       // clear form value
@@ -84,7 +84,7 @@ const CreateEvent = () => {
               {/* Address */}
               <Form.Group as={Col}>
                 <Form.Label>Address</Form.Label>
-                <Form.Control name="address1" onChange={handleChange} placeholder="Address 1" />
+                <Form.Control name="address" onChange={handleChange} placeholder="Address 1" />
               </Form.Group>
 
               {/* City */}

@@ -31,6 +31,10 @@ h6 {
   text-transform: capitalize;
 }
 
+.card-title, .card-subtitle {
+  color: black;
+}
+
 .btn {
   color: white;
 }
@@ -116,6 +120,10 @@ h6 {
 
 .social-icons {
   width: 20%;
+}
+
+#results {
+  width: 100%;
 }
 
 @media (min-width: 576px) {

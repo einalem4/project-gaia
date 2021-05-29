@@ -14,6 +14,7 @@ export const QUERY_USER_EVENTS = gql`
       description
       createdAt
       username
+      image
       comments {
         _id
         createdAt
@@ -38,6 +39,7 @@ export const QUERY_SINGLE_EVENT = gql`
       description
       createdAt
       username
+      image
       comments {
         _id
         createdAt
@@ -62,6 +64,7 @@ export const QUERY_SEARCH_EVENTS = gql`
       description
       createdAt
       username
+      image
       comments {
         _id
         createdAt
@@ -79,13 +82,14 @@ export const QUERY_ALL_EVENTS = gql`
       name
       date
       time
-      address1
+      address
       city
       state
       zip
       description
       createdAt
       username
+      image
       comments {
         _id
         createdAt
@@ -102,25 +106,26 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      image
       events {
         _id
         name
         date
         time
-        address1
+        address
         city
         state
         zip
         description
         createdAt
         username
+        image
         comments {
           _id
           createdAt
           commentText
           username
         }
-        createdAt
     }
   }
 }
