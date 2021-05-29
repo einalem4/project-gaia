@@ -1,26 +1,23 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_EVENT } from '../utils/mutations';
-import { QUERY_USER_EVENTS } from '../utils/queries';
+// import { QUERY_USER_EVENTS } from '../utils/queries';
 import { Button, Form, Col, Container, Jumbotron } from 'react-bootstrap';
 
 const CreateEvent = () => {
-  const [input, setInput] = useState('');
-  const [addEvent] = useMutation(ADD_EVENT, {
-    update(cache, { data: { addEvent } }) {
-      try {
-        // could potentially not exist yet, so wrap in a try...catch
-        const { events } = cache.readQuery({ query:QUERY_USER_EVENTS });
-        cache.writeQuery({
-          query: QUERY_USER_EVENTS,
-          data: { events: [addEvent, ...events] }
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    }
-  });
-
+  const defaultState = {
+    name: '',
+    date: '',
+    time: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    description: ''
+  };
+  const [input, setInput] = useState(defaultState);
+  const [addEvent] = useMutation(ADD_EVENT)
+    
   const handleChange = (event) => {
     const { name, value } = event.target
     setInput({ ...input, [name]: value })
@@ -84,7 +81,7 @@ const CreateEvent = () => {
               {/* Address */}
               <Form.Group as={Col}>
                 <Form.Label>Address</Form.Label>
-                <Form.Control name="address1" onChange={handleChange} placeholder="Address 1" />
+                <Form.Control name="address" onChange={handleChange} placeholder="Address" />
               </Form.Group>
 
               {/* City */}

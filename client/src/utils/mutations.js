@@ -32,7 +32,7 @@ export const ADD_EVENT = gql`
       name
       date
       time
-      address1
+      address
       city
       state
       zip
