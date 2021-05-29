@@ -125,7 +125,7 @@ export const QUERY_ME = gql`
         name
         date
         time
-        address1
+        address
         city
         state
         zip

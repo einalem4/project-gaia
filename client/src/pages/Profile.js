@@ -1,30 +1,30 @@
 import React from 'react';
-// import { Redirect, useParams } from 'react-router-dom';
-// import { useQuery, useMutation } from '@apollo/react-hooks';
-// import { QUERY_USER, QUERY_ME } from '../utils/queries';
-// import { ADD_FRIEND } from '../utils/mutations';
-// import Auth from '../utils/auth';
-import { Button, Image, Container, Jumbotron, Col } from 'react-bootstrap';
+import { Redirect, useParams } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { ADD_FRIEND } from '../utils/mutations';
+import Auth from '../utils/auth';
+import { Button, Container, Jumbotron, Col, Accordion, Card } from 'react-bootstrap';
 
 
 const Profile = () => {
-    // const { username: userParam } = useParams();
-    // const [addFriend] = useMutation(ADD_FRIEND);
+    const { username: userParam } = useParams();
+    const [addFriend] = useMutation(ADD_FRIEND);
 
-    // const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    //     variables: { username: userParam }
-    // });
+    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+        variables: { username: userParam }
+    });
 
-    // const user = data?.me || data?.user || {};
+    const user = data?.me || data?.user || {};
 
-    // // redirect to personal profile page if username is the logged-in user's
-    // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    //     return <Redirect to="/profile" />;
-    // }
+    // redirect to personal profile page if username is the logged-in user's
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+        return <Redirect to="/profile" />;
+    }
 
-    // if (loading) {
-    //     return <div>Loading...</div>;
-    // }
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     // if (!user?.username) {
     //     return (
@@ -34,36 +34,53 @@ const Profile = () => {
     //     );
     // }
 
-    // const handleClick = async () => {
-    //   try {
-    //     await addFriend({
-    //       variables: { id: user._id }
-    //     });
-    //   } catch (e) {
-    //     console.error(e);
-    //   }
-    // };
+    const handleClick = async () => {
+        try {
+            await addFriend({
+                variables: { id: user._id }
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    };
     return (
         <Jumbotron fluid className='mb-5'>
             <Container id="profile">
                 <div>
                     <Col>
-                        <h1 >Username</h1>
-                        <Button variant='secondary' type='submit' className='friend-btn'>
+                        <h1 >{`${user.username}`}</h1>
+                        <Button variant='secondary' className='friend-btn' onClick={handleClick}>
                             Add Friend
                      </Button>
                     </Col>
-                    <Col>
-                    </Col>
-                    <Col>
+
+                    {/* Created Events*/}
+                    <Accordion>
                         <h2>Created Events</h2>
-                    </Col>
-                    <Col>
+                        <Card>
+                            <Accordion.Toggle variant="link" eventKey="0">
+                                Click To See Events!
+                        </Accordion.Toggle>
+
+                            <Accordion.Collapse eventKey="0">
+                                <Card.Body>Hello! I'm the body</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+
+                        {/* Friends */}
                         <h2>Friends</h2>
-                    </Col>
+                        <Card>
+                            <Accordion.Toggle variant="link" eventKey="1">
+                                Click To See Friends!
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey="1">
+                                <Card.Body>Hello! I'm the body</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                    </Accordion>
                 </div>
             </Container>
-        </Jumbotron>
+        </Jumbotron >
 
     );
 };
