@@ -239,3 +239,25 @@ h6 {
     }
   }
 }
+
+// profile page
+#profile {
+  div {
+    background-color: $light-grey;
+    color: $dark-grey;
+    border-radius: 20px;
+    padding: 1.5rem;
+
+    h1 {
+      color: $dark-grey;
+      line-height: 1.25;
+      margin: 5px 0;
+    }
+
+    h2 {
+      color: $dark-grey;
+      line-height: 1.25;
+      margin: 5px 0;
+    }
+  }
+}

@@ -1,5 +1,23 @@
 import gql from 'graphql-tag';
 
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      friendCount
+      friends {
+        _id
+        username
+      }
+      events {
+        _id
+      }
+    }
+  }
+`;
+
 export const QUERY_USER_EVENTS = gql`
   query userEvents($username: String) {
     userEvents(username: $username) {
@@ -107,7 +125,7 @@ export const QUERY_ME = gql`
         name
         date
         time
-        address1
+        address
         city
         state
         zip
