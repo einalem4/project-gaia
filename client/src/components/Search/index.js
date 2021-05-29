@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Button, Container, Form, FormControl, InputGroup, Jumbotron } from 'react-bootstrap';
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_SERCH_EVENTS } from '../../utils/queries';
 
 const Search = () => {
     const [searchValue, setSearchValue] = useState('');

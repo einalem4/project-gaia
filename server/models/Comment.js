@@ -1,4 +1,4 @@
-const { Schema, model} = require('mongoose');
+const { Schema } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const commentSchema = new Schema(
@@ -16,11 +16,9 @@ const commentSchema = new Schema(
             type: Date,
             default: Date.now,
             get: timestamp => dateFormat(timestamp)
-          }
-        
+        }
+
     }
 );
 
-// const Comment = model('Comment', commentSchema);
-
-module.exports = commentSchema; 
+module.exports = commentSchema;
