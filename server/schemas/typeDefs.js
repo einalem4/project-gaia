@@ -15,6 +15,7 @@ const typeDefs = gql`
         eventCount: Int
         friends: [User]
         friendCount: Int
+        image: String
     }
 
     input EventInput {
@@ -40,6 +41,7 @@ const typeDefs = gql`
         description: String!
         username: String
         comments: [Comment]
+        image: String
         createdAt: String!
     }
 

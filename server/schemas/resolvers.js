@@ -89,7 +89,7 @@ const resolvers = {
             }
         },
         
-        addEvent: async (parent, { input: {name, date, time, address, city, state, zip, description} }, context) => {
+        addEvent: async (parent, { input: {name, date, time, address, city, state, zip, description, image} }, context) => {
             if (context.user) {
                 const newEvent = {
                     name,
@@ -99,7 +99,8 @@ const resolvers = {
                     city, 
                     state, 
                     zip,
-                    description
+                    description,
+                    image
                 }
                 
                 const createdEvent = await Event.create({ ...newEvent, username: context.user.username });
