@@ -25,12 +25,47 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_EVENT = gql`
-  mutation addEvent($eventData: String!) {
-    addEvent(eventData: $eventData) {
+  mutation addEvent($input: EventInput) {
+    addEvent(input: $input) {
       _id
-      eventData
       createdAt
+      name
+      date
+      time
+      address1
+      city
+      state
+      zip
       username
+      description
+    }
+  }
+`;
+
+export const ADD_COMMENT = gql`
+mutation addComment($eventId: ID!, $commentText: String!) {
+  addComment(eventId: $eventId, commentText: $commentText) {
+      _id
+      comments {
+        _id
+        commentText
+        createdAt
+        username
+      }
+  }
+}
+`;
+
+export const ADD_FRIEND = gql`
+  mutation addFriend($id: ID!) {
+    addFriend(friendId: $id) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+      }
     }
   }
 `;

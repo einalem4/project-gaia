@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_EVENT } from '../utils/mutations';
-import { QUERY_EVENTS } from '../utils/queries';
+import { QUERY_USER_EVENTS } from '../utils/queries';
 import { Button, Form, Col } from 'react-bootstrap';
 
 const CreateEvent = () => {
@@ -10,9 +10,9 @@ const CreateEvent = () => {
     update(cache, { data: { addEvent } }) {
       try {
         // could potentially not exist yet, so wrap in a try...catch
-        const { events } = cache.readQuery({ query: QUERY_EVENTS });
+        const { events } = cache.readQuery({ query:QUERY_USER_EVENTS });
         cache.writeQuery({
-          query: QUERY_EVENTS,
+          query: QUERY_USER_EVENTS,
           data: { events: [addEvent, ...events] }
         });
       } catch (e) {

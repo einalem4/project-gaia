@@ -13,26 +13,59 @@ const typeDefs = gql`
         email: String
         events: [Event]
         eventCount: Int
+        friends: [User]
+        friendCount: Int
+    }
+
+    input EventInput {
+        name: String!
+        date: String!
+        time: String!
+        address: String!
+        city: String!
+        state: String!
+        zip: String!
+        description: String!
     }
 
     type Event {
         _id: ID
-        eventData: String
-        createdAt: String
+        name: String!
+        date: String!
+        time: String!
+        address: String!
+        city: String!
+        state: String!
+        zip: String!
+        description: String!
         username: String
-      }
+        comments: [Comment]
+        createdAt: String!
+    }
+
+    type Comment {
+        _id: ID
+        commentText: String
+        username: String
+        createdAt: String
+    }
 
     type Query {
         me: User
-        events(username: String): [Event]
-        event(_id: ID!): Event
+        users: [User]
+        user(username: String!): User
+        events: [Event]
+        userEvents(username: String!): [Event]
+        singleEvent(_id: ID!): Event
+        searchEvents(city: String!): [Event]
     }
 
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addEvent(eventData: String!): Event
-
+        addEvent(input: EventInput): Event
+        addComment(eventId: ID!, commentText: String!): Event
+        addFriend(friendId: ID!): User
     }
 `;
 

@@ -9,18 +9,47 @@ const resolvers = {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
                     .populate('events')
+                    .populate('comments')
+                    .populate('friends')
                 return userData;
             }
 
             throw new AuthenticationError('Not logged in');
         },
-        events: async (parent, { username }) => {
+
+        users: async () => {
+            return User.find()
+                .select('-__v -password')
+                .populate('events')
+                .populate('comments')
+                .populate('friends')
+        },
+
+        user: async (parent, { username }) => {
+            return User.findOne({ username }) 
+                .select('-__v -password')
+                .populate('events')
+                .populate('comments')
+                .populate('friends')
+        },
+
+        events: async () => {
+            return Event.find()
+                .populate('comments')
+        },
+
+        userEvents: async (parent, { username }) => {
             const params = username ? { username } : {};
             return Event.find(params).sort({ createdAt: -1 });
         },
 
-        event: async (parent, { _id }) => {
+        singleEvent: async (parent, { _id }) => {
             return Event.findOne({ _id });
+        },
+
+        searchEvents: async(parent, { city }) => {
+            const params = city ? { city } : {};
+            return Event.find(params);
         }
     },
 
@@ -47,22 +76,59 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        
-        addEvent: async (parent, args, context) => {
-            if (context.user) {
-                const event = await Event.create({ ...args, username: context.user.username });
 
-                await User.findByIdAndUpdate(
+        addComment: async (parent, { eventId, commentText }, context) => {
+            if (context.user) {
+                const updatedEvent = await Event.findOneAndUpdate(
+                    { _id: eventId},
+                    { $push: { comments: {commentText, username: context.user.username} } },
+                    { new: true }
+                );
+      
+                return updatedEvent;
+            }
+        },
+        
+        addEvent: async (parent, { input: {name, date, time, address, city, state, zip, description} }, context) => {
+            if (context.user) {
+                const newEvent = {
+                    name,
+                    date,
+                    time,
+                    address,
+                    city, 
+                    state, 
+                    zip,
+                    description
+                }
+                
+                const createdEvent = await Event.create({ ...newEvent, username: context.user.username });
+                    
+                User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { events: event._id } },
+                    { $addToSet: { events: createdEvent._id } },
                     { new: true }
                 );
 
-                return event;
-            }
-
+                return createdEvent;
+            } 
+            
             throw new AuthenticationError('You need to be logged in!');
         },
+
+        addFriend: async (parent, { friendId }, context) => {
+            if (context.user) {
+              const updatedUser = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $addToSet: { friends: friendId } },
+                { new: true }
+              ).populate('friends');
+          
+              return updatedUser;
+            }
+          
+            throw new AuthenticationError('You need to be logged in!');
+        }
     }
 }
 

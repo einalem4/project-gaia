@@ -1,23 +1,97 @@
 import gql from 'graphql-tag';
 
-export const QUERY_EVENTS = gql`
-  query events($username: String) {
-    events(username: $username) {
+export const QUERY_USER_EVENTS = gql`
+  query userEvents($username: String) {
+    userEvents(username: $username) {
       _id
-      eventData
+      name
+      date
+      time
+      address
+      city
+      state
+      zip
+      description
       createdAt
       username
+      comments {
+        _id
+        createdAt
+        commentText
+        username
+      }
     }
   }
 `;
 
-export const QUERY_EVENT = gql`
-  query event($id: ID!) {
-    event(_id: $id) {
+export const QUERY_SINGLE_EVENT = gql`
+  query singleEvent($id: ID!) {
+    singleEvent(_id: $id) {
       _id
-      eventData
+      name
+      date
+      time
+      address
+      city
+      state
+      zip
+      description
       createdAt
       username
+      comments {
+        _id
+        createdAt
+        commentText
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_SEARCH_EVENTS = gql`
+  query searchEvents($city: String!) {
+    searchEvents(city: $city) {
+      _id
+      name
+      date
+      time
+      address
+      city
+      state
+      zip
+      description
+      createdAt
+      username
+      comments {
+        _id
+        createdAt
+        commentText
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_ALL_EVENTS = gql`
+  query events {
+    events {
+      _id
+      name
+      date
+      time
+      address1
+      city
+      state
+      zip
+      description
+      createdAt
+      username
+      comments {
+        _id
+        createdAt
+        commentText
+        username
+      }
     }
   }
 `;
@@ -30,7 +104,22 @@ export const QUERY_ME = gql`
       email
       events {
         _id
-        eventData
+        name
+        date
+        time
+        address1
+        city
+        state
+        zip
+        description
+        createdAt
+        username
+        comments {
+          _id
+          createdAt
+          commentText
+          username
+        }
         createdAt
     }
   }
