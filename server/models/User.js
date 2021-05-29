@@ -26,10 +26,10 @@ const userSchema = new Schema(
                 ref: 'Event'
             }
         ],
-        comments: [
+        friends: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Comment'
+                ref: 'User'
             }
         ]
     },

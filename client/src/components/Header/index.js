@@ -9,7 +9,7 @@ const Header = () => {
     };
 
     return(
-        <Navbar variant='dark' expand="lg" className='d-flex justify-content-between p-3'>
+        <Navbar variant='dark' expand="lg" className='d-flex justify-content-between px-5'>
             <Navbar.Brand href="/">Project Gaia</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
