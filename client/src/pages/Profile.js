@@ -6,6 +6,7 @@ import { ADD_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Button, Container, Jumbotron, Col, Accordion, Card } from 'react-bootstrap';
 import EventList from '../components/EventList';
+import FriendList from '../components/FriendList';
 
 
 
@@ -79,7 +80,11 @@ const Profile = () => {
                                 </svg>
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="1">
-                                <Card.Body>{user.friend}</Card.Body>
+                                <Card.Body><FriendList
+                                    username={user.username}
+                                    friendCount={user.friendCount}
+                                    friends={user.friends}
+                                /></Card.Body>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
