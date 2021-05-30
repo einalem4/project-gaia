@@ -39,23 +39,25 @@ db.once('open', async () => {
   // create events
   let createdEvents = [];
   for (let i = 0; i < 100; i += 1) {
-    const name = faker.lorem.slug();
+    const regEx = /-/g;
+    const name = faker.lorem.slug().replace(regEx, ' ');
     
 
     // generates random timestamp and then formates into a readable time
     const timeStamp = faker.time.recent();
     // turns argument into milliseconds instead of seconds and then converts date
-    const newDate = new Date(timeStamp * 1000);
+    const newDate = new Date(timeStamp);
     const date = new Intl.DateTimeFormat('en-US').format(newDate);
 
     // turns argument into milliseconds instead of seconds and then converts time
-    const newTime = new Date(timeStamp * 1000);
+    const newTime = new Date(timeStamp);
     const time = newTime.toLocaleTimeString('en-us');
 
     const address = faker.address.streetAddress();
     const city = faker.address.cityName();
     const state = faker.address.state();
-    const zip = faker.address.zipCode();
+    const newZip = faker.address.zipCode().split('-');
+    const zip = newZip[0];
 
     const description = faker.lorem.sentence();
     const image = faker.image.nature();
