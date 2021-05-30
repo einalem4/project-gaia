@@ -12,7 +12,7 @@ const Profile = () => {
     const [addFriend] = useMutation(ADD_FRIEND);
 
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam }
+        variables: { username: userParam, }
     });
 
     const user = data?.me || data?.user || {};
@@ -59,9 +59,10 @@ const Profile = () => {
                         <h2>Created Events</h2>
                         <Card>
                             <Accordion.Toggle variant="link" eventKey="0">
-                                Click To See Events!
-                        </Accordion.Toggle>
-
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </Accordion.Toggle>
                             <Accordion.Collapse eventKey="0">
                                 <Card.Body>Hello! I'm the body</Card.Body>
                             </Accordion.Collapse>
@@ -71,7 +72,9 @@ const Profile = () => {
                         <h2>Friends</h2>
                         <Card>
                             <Accordion.Toggle variant="link" eventKey="1">
-                                Click To See Friends!
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="1">
                                 <Card.Body>Hello! I'm the body</Card.Body>
