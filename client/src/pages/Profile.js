@@ -29,13 +29,13 @@ const Profile = () => {
         return <div>Loading...</div>;
     }
 
-    // if (!user?.username) {
-    //     return (
-    //         <h4>
-    //             You need to be logged in to see this page. Use the navigation links above to sign up or log in!
-    //         </h4>
-    //     );
-    // }
+    if (!user?.username) {
+        return (
+            <h3>
+                You need to be logged in to see this page. Use the navigation links above to sign up or log in!
+            </h3>
+        );
+    }
 
     const handleClick = async () => {
         try {
@@ -52,9 +52,11 @@ const Profile = () => {
                 <div>
                     <Col>
                         <h1 >{user.username}</h1>
-                        <Button variant='secondary' className='friend-btn' onClick={handleClick}>
-                            Add Friend
-                     </Button>
+                        {userParam && (
+                            <Button variant='secondary' className='friend-btn' onClick={handleClick}>
+                                Add Friend
+                            </Button>
+                        )}
                     </Col>
 
                     {/* Created Events*/}
