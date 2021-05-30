@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Button, Container, Form, FormControl, InputGroup, Jumbotron } from 'react-bootstrap';
 
 const Search = () => {
+    const history = useHistory();
     const [searchValue, setSearchValue] = useState('');
 
     const handleChange = event => {
@@ -10,8 +11,9 @@ const Search = () => {
     }
 
     const handleSearchSubmit = async event => {
-        // event.preventDefault();
-        <Redirect to={`/results/${searchValue}`} />
+        event.preventDefault();
+        
+        history.push(`/results/${searchValue}`);
     }
 
     return(
@@ -20,7 +22,7 @@ const Search = () => {
                 <div>
                     <h2>cleaning the world,<br /> one community at a time</h2>
                     <p>Find a community cleanup near you</p>
-                    <Form>
+                    <Form onSubmit={handleSearchSubmit}>
                         <InputGroup className='d-flex justify-content-center'>
                             <FormControl
                                 type='text'
@@ -28,11 +30,10 @@ const Search = () => {
                                 aria-label='Search by Zipcode'
                                 value={searchValue}
                                 onChange={handleChange}
-                                onSubmit={handleSearchSubmit}
                             />
                             <InputGroup.Append>
-                                <Button variant='secondary' className='search-btn' type='submit'>
-                                    <Link to={`/results/${searchValue}`} style={{color: 'white', textDecoration:'none'}}>Search</Link>
+                                <Button variant='secondary' className='search-btn' type='submit' style={{color: 'white', textDecoration:'none'}}>
+                                    Search
                                 </Button>
                             </InputGroup.Append>
                         </InputGroup>
