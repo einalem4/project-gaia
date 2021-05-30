@@ -31,7 +31,7 @@ const Profile = () => {
 
     if (!user?.username) {
         return (
-            <h3>
+            <h3 style={{ color: 'black', textAlign: 'center' }}>
                 You need to be logged in to see this page. Use the navigation links above to sign up or log in!
             </h3>
         );
