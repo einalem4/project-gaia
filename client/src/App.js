@@ -28,9 +28,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='d-flex flex-column justify-content-between vh-100 vw-100'>
+        <div className='d-flex flex-column justify-content-between min-vh-100 vw-100'>
           <Header />
-          <main class='w-100 h-100'>
+          <main className='align-self-stretch'>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/profile/:username?" component={Profile} />
