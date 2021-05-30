@@ -8,14 +8,12 @@ import { Button, Container, Jumbotron, Col, Accordion, Card } from 'react-bootst
 import EventList from '../components/EventList';
 import FriendList from '../components/FriendList';
 
-
-
 const Profile = () => {
     const { username: userParam } = useParams();
     const [addFriend] = useMutation(ADD_FRIEND);
 
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam, event: userParam }
+        variables: { username: userParam }
     });
 
     const user = data?.me || data?.user || {};
@@ -82,11 +80,13 @@ const Profile = () => {
                                 </svg>
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="1">
-                                <Card.Body><FriendList
-                                    username={user.username}
-                                    friendCount={user.friendCount}
-                                    friends={user.friends}
-                                /></Card.Body>
+                                <Card.Body>
+                                    <FriendList
+                                        username={user.username}
+                                        friendCount={user.friendCount}
+                                        friends={user.friends}
+                                    />
+                                </Card.Body>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
