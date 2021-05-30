@@ -14,6 +14,7 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav>
+                    <Nav.Link href="/">Search</Nav.Link>
                     {Auth.loggedIn() ? (
                         <>
                             <Nav.Link href="/profile">Profile</Nav.Link>
