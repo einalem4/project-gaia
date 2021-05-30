@@ -5,6 +5,8 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { ADD_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Button, Container, Jumbotron, Col, Accordion, Card } from 'react-bootstrap';
+import EventList from '../components/EventList';
+
 
 
 const Profile = () => {
@@ -12,7 +14,7 @@ const Profile = () => {
     const [addFriend] = useMutation(ADD_FRIEND);
 
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam, }
+        variables: { username: userParam, event: userParam }
     });
 
     const user = data?.me || data?.user || {};
@@ -48,7 +50,7 @@ const Profile = () => {
             <Container id="profile">
                 <div>
                     <Col>
-                        <h1 >{`${user.username}`}</h1>
+                        <h1 >{user.username}</h1>
                         <Button variant='secondary' className='friend-btn' onClick={handleClick}>
                             Add Friend
                      </Button>
@@ -64,7 +66,7 @@ const Profile = () => {
                                 </svg>
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="0">
-                                <Card.Body>Hello! I'm the body</Card.Body>
+                                <Card.Body><EventList events={user.events} title={user.username} /></Card.Body>
                             </Accordion.Collapse>
                         </Card>
 
@@ -77,7 +79,7 @@ const Profile = () => {
                                 </svg>
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="1">
-                                <Card.Body>Hello! I'm the body</Card.Body>
+                                <Card.Body>{user.friend}</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
