@@ -33,11 +33,7 @@ const Signup =() => {
   };
 
   return (
-    <div className="container my-1" id='signup'>
-      <Link to="/login">
-        ← Go to Login
-      </Link>
-
+    <div className="container my-5" id='signup'>
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
@@ -76,11 +72,16 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <button className="btn btn-primary btn-block" id='signup-btn' type='submit'>
+        <div id='btn-signup'>
+        <button className="btn btn-primary btn-block" id='signup-btn2' type='submit'>
             Sign Up
         </button>
+        </div>
       </form>
       {error && <div>Signup failed</div>}
+      <Link to="/login" id='login-btn2'>
+        Login
+      </Link>
     </div>
 
   );

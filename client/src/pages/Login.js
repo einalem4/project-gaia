@@ -28,7 +28,7 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1" id='login'>
+    <div className="container my-5" id='login'>
 
 
       <h2>Login</h2>
@@ -62,11 +62,13 @@ function Login(props) {
             <p className="error-text" >The provided credentials are incorrect</p>
           </div> : null
         }
-        <button className="btn btn-success btn-block" id='login-btn' type='submit'>
-            Login
+        <div id='btn-login'>
+        <button className="btn btn-success btn-block" id='login-btn1' type='submit'>
+             Login
         </button>
+        </div>
         <br/>
-        <Link to="/signup" id='signup-btn'>
+        <Link to="/signup" id='signup-btn1'>
         Sign Up
         </Link>
 

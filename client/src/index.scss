@@ -188,7 +188,7 @@ h6 {
   }
 }
 
-#rsvp-btn, #login-btn {
+#rsvp-btn {
   box-shadow:inset 0px 1px 0px 0px #9acc85;
 	background:linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
 	background-color: $success;
@@ -210,8 +210,21 @@ h6 {
 	top:10px;
 }
 
-#signup-btn {
-  box-shadow:inset 0px 1px 0px 0px;
+#login-btn1, #signup-btn2 {
+  box-shadow:inset 0px 1px 0px 0px #9acc85;
+	background-color: $success;
+	border:1px solid #3b6e22;
+	display: inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding: 6px 76px;
+	text-decoration:none;
+}
+
+#signup-btn1, #login-btn2 {
 	background-color: lightgray;
 	border:1px solid $primary;
 	display:inline-block;
@@ -222,6 +235,10 @@ h6 {
 	font-weight:bold;
 	padding: 6px 76px;
 	text-decoration:none;
+}
+
+#btn-signup{
+  padding-bottom: 30px;
 }
 
 #rsvp-btn:hover {
