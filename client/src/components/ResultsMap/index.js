@@ -1,56 +1,59 @@
 import React from 'react';
-import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-maps';
+import { GoogleMap, useLoadScript, withGoogleMap, Marker } from '@react-google-maps/api';
 import { geoCode } from '../../utils/API';
 
-const GOOGLE_KEY = process.env.REACT_APP_GOOGLE_KEY;
+const mapContainerStyle = {
+    width: '100%',
+    height: '100%'
+};
+
+const center = {
+    lat: 43.653225,
+    lng: -79.383186
+};
+
+const options = {
+    disableDefaultUI: true,
+    zoomControl: true
+}
 
 const ResultsMap = props => {
-    // const eventData = [props];
+    const {mapData} = props;
 
-    // console.log(eventData);
+    const getGeoCode = async (city) => {
+        const response = await geoCode(city);
 
-    // const getGeoCode = async (query) => {
-    //     try {
-    //         const response = await geoCode(query)
+        const { coordinates } = await response.json();
 
-    //         if(!response.ok) {
-    //             throw new Error('Something went wrong');
-    //         }
+        // console.log(coordinates);
+    }
 
-    //         const { coordinates } = await response.json();
+    const returnedData = mapData.map(event => {
+        // console.log(event.address + ' ' + event.city + ' ' + event.state)
+        getGeoCode(event)
+    });
 
-    //         console.log(coordinates);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
+    // console.log(returnedData);
 
-    // const returnedEventData = eventData.mapData.map(event => (getGeoCode(event)));
 
-    // console.log(returnedEventData);
-    
-    function Map() {
-        return(
-            <GoogleMap 
-                defaultZoom={10} 
-                defaultCenter={{ lat: 26.611080, lng: -81.634163 }} 
-            >
-            </GoogleMap>
-        );
-    };
-    
-    const WrappedMap = withScriptjs(withGoogleMap(Map));
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY
+    })
+
+    if (loadError) return "Error loading maps";
+    if (!isLoaded) return "Loading Maps"
 
     return(
-        <div style={ {width: '100%', height: '100%'} }>
-            <WrappedMap 
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${GOOGLE_KEY}`}
-                loadingElement={<div style={ {height: '100%'} } />} 
-                containerElement={<div style={ {height: '100%'} } />} 
-                mapElement={<div style={ {height: '100%'} } />} 
-            />
+        <div style={{height: '100%'}}>
+            <GoogleMap
+                mapContainerStyle={mapContainerStyle} 
+                zoom={8}
+                center={center}
+                options={options}   
+            >
+            </GoogleMap>
         </div>
     )
-};
+}
 
 export default ResultsMap;

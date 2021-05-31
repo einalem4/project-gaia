@@ -182,9 +182,30 @@ h6 {
       line-height: 1.25;
       margin: 5px 0;
     }
-    .card-body{
+    .card-body {
       background-color: white;
     }
+  }
+  .card {
+    border: 0;
+  }
+}
+
+#event {
+  background-color: $light-grey;
+  padding: 1.5rem;
+  border-radius: 20px;
+
+  h2 {
+    color: $dark-blue;
+    // text-align: center;
+  }
+
+  h3 {
+    color: black;
+  }
+  .btn {
+    width: 150px;
   }
 }
 

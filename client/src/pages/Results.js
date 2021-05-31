@@ -22,7 +22,7 @@ const Results = () => {
     return(
         <Container id="results" className='d-flex flex-column justify-content-center align-items-center' fluid>
             <Row className='w-100 h-100'>
-                <Col xs={12} md={6}>
+                <Col xs={12} md={6} className='h-100' style={{overflowY: 'scroll'}}>
                     <CardDeck>
                         {events.map(event => (
                             <Card className='d-flex flex-row justify-content-start align-items-center my-2' key={event._id}>
@@ -32,21 +32,21 @@ const Results = () => {
                                     {Auth.loggedIn() ? (
                                         <>
                                             <Card.Subtitle>
-                                                <CalendarEvent className='m-2' /> {event.date} 
-                                                <Clock className='m-2' /> {event.time} 
-                                                <GeoAlt className='m-2' />{event.address}
+                                                <CalendarEvent style={{marginLeft: '0px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }}/> {event.date} 
+                                                <Clock style={{marginLeft: '10px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }} /> {event.time} 
+                                                <GeoAlt style={{marginLeft: '10px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }} /> {event.address}
                                             </Card.Subtitle>
                                         </>    
                                     ) : (
                                         <>
                                             <Card.Subtitle>
-                                                <CalendarEvent className='m-2' /> {event.date} 
+                                                <CalendarEvent style={{marginLeft: '0px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }}/> {event.date} 
                                             </Card.Subtitle>
                                         </>
                                     )}
                                     <Card.Text>{event.description}</Card.Text>
                                     <Button variant='primary'>
-                                        <Link to={`/event/${event.id}`} style={{color: 'white', textDecoration:'none'}}>View Event</Link>
+                                        <Link to={`/event/${event._id}`} style={{color: 'white', textDecoration:'none'}}>View Event</Link>
                                     </Button>
                                 </Card.Body>
                             </Card>    

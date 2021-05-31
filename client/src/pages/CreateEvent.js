@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_EVENT } from '../utils/mutations';
 import { useHistory } from 'react-router-dom';
 import { Button, Form, Col, Container, Jumbotron } from 'react-bootstrap';
+
+import { QUERY_USER_EVENTS, QUERY_ME } from '../utils/queries';
+import { ADD_EVENT } from '../utils/mutations';
 
 const CreateEvent = () => {
   const defaultState = {
@@ -19,7 +21,25 @@ const CreateEvent = () => {
   const [input, setInput] = useState(defaultState);
   const history = useHistory();
 
-  const [addEvent, { error }] = useMutation(ADD_EVENT);
+  const [addEvent, { error }] = useMutation(ADD_EVENT, {
+    update(cache, { data: { addEvent } }) {
+      try {
+        const { userEvents } = cache.readQuery({ query: QUERY_USER_EVENTS });
+        cache.writeQuery({
+          query: QUERY_USER_EVENTS,
+          data: { events: [addEvent, ...userEvents] }
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, events: [...me.events, addEvent] } }
+      });
+    }
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,7 +66,6 @@ const CreateEvent = () => {
 
   return (
     <Jumbotron fluid className='m-5'>
-      <div className='background'></div>
       <Container id="create">
         <h1 >Create Event</h1>
         <p>

@@ -34,14 +34,14 @@ const resolvers = {
         },
         userEvents: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Event.find(params).sort({ createdAt: -1 });
+            return Event.find(params).sort({ createdAt: -1 }).populate('comments');
         },
         singleEvent: async (parent, { _id }) => {
-            return Event.findOne({ _id });
+            return Event.findOne({ _id }).populate('comments');
         },
         searchEvents: async(parent, { city }) => {
             const params = city ? { city } : {};
-            return Event.find(params);
+            return Event.find(params).populate('comments');
         }
     },
     Mutation: {
@@ -86,9 +86,10 @@ const resolvers = {
                     image
                 }
                 const createdEvent = await Event.create({ ...newEvent, username: context.user.username });
-                User.findByIdAndUpdate(
+                    
+                await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { events: createdEvent._id } },
+                    { $push: { events: createdEvent._id } },
                     { new: true }
                 );
                 return createdEvent;

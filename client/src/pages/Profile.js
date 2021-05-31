@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -11,6 +11,8 @@ import FriendList from '../components/FriendList';
 const Profile = () => {
     const { username: userParam } = useParams();
     const [addFriend] = useMutation(ADD_FRIEND);
+    const [activeId, setActiveId] = useState('0');
+
 
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam }
@@ -44,6 +46,15 @@ const Profile = () => {
             console.error(e);
         }
     };
+
+    const toggleActive = (id) => {
+        if (activeId === id) {
+            setActiveId(null);
+        } else {
+            setActiveId(id);
+        }
+    }
+
     return (
         <Jumbotron fluid className='mb-5'>
             <Container id="profile">
@@ -58,35 +69,33 @@ const Profile = () => {
                     </Col>
 
                     {/* Created Events*/}
-                    <Accordion>
-                        <h2>Created Events</h2>
-                        <Card>
-                            <Accordion.Toggle variant="link" eventKey="0">
+                    <Accordion style={{ margin: 'auto' }}>
+                        <h2 style={{ margin: '10px auto' }}>Created Events</h2>
+                        <Card style={{ padding: 0, margin: 'auto' }} className={activeId === '0' ? 'panel-wrap active-panel' : 'panel-wrap'}>
+                            <Accordion.Toggle onClick={() => toggleActive('0')} variant="link" eventKey="0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
                                     <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                 </svg>
                             </Accordion.Toggle>
-                            <Accordion.Collapse eventKey="0">
-                                <Card.Body><EventList events={user.events} title={user.username} /></Card.Body>
+                            <Accordion.Collapse style={{ padding: 0, margin: 0 }} eventKey="0">
+                                <EventList events={user.events} />
                             </Accordion.Collapse>
                         </Card>
 
                         {/* Friends */}
-                        <h2>Friends</h2>
-                        <Card>
-                            <Accordion.Toggle variant="link" eventKey="1">
+                        <h2 style={{ margin: '20px auto' }}>Friends</h2>
+                        <Card style={{ padding: 0, margin: '20px auto' }} className={activeId === '1' ? 'panel-wrap active-panel' : 'panel-wrap'}>
+                            <Accordion.Toggle onClick={() => toggleActive('1')} variant="link" eventKey="1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
                                     <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                 </svg>
                             </Accordion.Toggle>
-                            <Accordion.Collapse eventKey="1">
-                                <Card.Body>
-                                    <FriendList
-                                        username={user.username}
-                                        friendCount={user.friendCount}
-                                        friends={user.friends}
-                                    />
-                                </Card.Body>
+                            <Accordion.Collapse style={{ padding: 0, margin: 0 }} eventKey="1">
+                                <FriendList
+                                    username={user.username}
+                                    friendCount={user.friendCount}
+                                    friends={user.friends}
+                                />
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
