@@ -19,7 +19,7 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_USER_EVENTS = gql`
-  query userEvents($username: String) {
+  query userEvents($username: String!) {
     userEvents(username: $username) {
       _id
       name
