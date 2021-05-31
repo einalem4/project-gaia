@@ -1,22 +1,119 @@
 import gql from 'graphql-tag';
 
-export const QUERY_EVENTS = gql`
-  query events($eventData: String!, $name: String!, $date: String!, $time: String!, $address1: String!, $city: String!, $state: String!, $zip: String!, $description: String!) {
-    events(eventData: $eventData) {
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
       _id
-      eventData
-      createdAt
       username
+      email
+      friendCount
+      friends {
+        _id
+        username
+      }
+      events {
+        _id
+      }
     }
   }
 `;
 
-export const QUERY_EVENT = gql`
-  query event($id: ID!) {
-    event(_id: $id) {
+export const QUERY_USER_EVENTS = gql`
+  query userEvents($username: String) {
+    userEvents(username: $username) {
       _id
+      name
+      date
+      time
+      address
+      city
+      state
+      zip
+      description
       createdAt
       username
+      image
+      comments {
+        _id
+        createdAt
+        commentText
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_EVENT = gql`
+  query singleEvent($id: ID!) {
+    singleEvent(_id: $id) {
+      _id
+      name
+      date
+      time
+      address
+      city
+      state
+      zip
+      description
+      createdAt
+      username
+      image
+      comments {
+        _id
+        createdAt
+        commentText
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_SEARCH_EVENTS = gql`
+  query searchEvents($city: String!) {
+    searchEvents(city: $city) {
+      _id
+      name
+      date
+      time
+      address
+      city
+      state
+      zip
+      description
+      createdAt
+      username
+      image
+      comments {
+        _id
+        createdAt
+        commentText
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_ALL_EVENTS = gql`
+  query events {
+    events {
+      _id
+      name
+      date
+      time
+      address
+      city
+      state
+      zip
+      description
+      createdAt
+      username
+      image
+      comments {
+        _id
+        createdAt
+        commentText
+        username
+      }
     }
   }
 `;
@@ -27,10 +124,26 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      image
       events {
         _id
-        eventData
+        name
+        date
+        time
+        address
+        city
+        state
+        zip
+        description
         createdAt
+        username
+        image
+        comments {
+          _id
+          createdAt
+          commentText
+          username
+        }
     }
   }
 }

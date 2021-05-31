@@ -20,16 +20,19 @@ const userSchema = new Schema(
             required: true,
             minlength: 5
         },
+        image: {
+            type: String,
+        },
         events: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'Event'
             }
         ],
-        comments: [
+        friends: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Comment'
+                ref: 'User'
             }
         ]
     },

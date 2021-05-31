@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const { Schema, model} = require('mongoose');
+=======
+const { Schema } = require('mongoose');
+>>>>>>> 66540aabe1e978132c596e3c4363205c42ab34db
 const dateFormat = require('../utils/dateFormat');
 
 const commentSchema = new Schema(
@@ -16,6 +20,7 @@ const commentSchema = new Schema(
             type: Date,
             default: Date.now,
             get: timestamp => dateFormat(timestamp)
+<<<<<<< HEAD
           }
         
     }
@@ -24,3 +29,11 @@ const commentSchema = new Schema(
 const Comment = model('Comment', commentSchema);
 
 module.exports = Comment; 
+=======
+        }
+
+    }
+);
+
+module.exports = commentSchema;
+>>>>>>> 66540aabe1e978132c596e3c4363205c42ab34db
