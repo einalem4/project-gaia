@@ -1,11 +1,9 @@
 import React from 'react';
-
 import { Link, useParams } from 'react-router-dom';
 import { Card, CardDeck, Container, Row, Col, Button } from 'react-bootstrap';
 import { CalendarEvent, Clock, GeoAlt } from 'react-bootstrap-icons';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_SEARCH_EVENTS } from '../utils/queries';
-
 import ResultsMap from '../components/ResultsMap';
 import Auth from '../utils/auth';
 
