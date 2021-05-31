@@ -5,7 +5,8 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { ADD_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Button, Container, Jumbotron, Col, Accordion, Card } from 'react-bootstrap';
-
+import EventList from '../components/EventList';
+import FriendList from '../components/FriendList';
 
 const Profile = () => {
     const { username: userParam } = useParams();
@@ -26,13 +27,13 @@ const Profile = () => {
         return <div>Loading...</div>;
     }
 
-    // if (!user?.username) {
-    //     return (
-    //         <h4>
-    //             You need to be logged in to see this page. Use the navigation links above to sign up or log in!
-    //         </h4>
-    //     );
-    // }
+    if (!user?.username) {
+        return (
+            <h3 style={{ color: 'black', textAlign: 'center' }}>
+                You need to be logged in to see this page. Use the navigation links above to sign up or log in!
+            </h3>
+        );
+    }
 
     const handleClick = async () => {
         try {
@@ -48,10 +49,12 @@ const Profile = () => {
             <Container id="profile">
                 <div>
                     <Col>
-                        <h1 >{`${user.username}`}</h1>
-                        <Button variant='secondary' className='friend-btn' onClick={handleClick}>
-                            Add Friend
-                     </Button>
+                        <h1 >{user.username}</h1>
+                        {userParam && (
+                            <Button variant='secondary' className='friend-btn' onClick={handleClick}>
+                                Add Friend
+                            </Button>
+                        )}
                     </Col>
 
                     {/* Created Events*/}
@@ -59,11 +62,12 @@ const Profile = () => {
                         <h2>Created Events</h2>
                         <Card>
                             <Accordion.Toggle variant="link" eventKey="0">
-                                Click To See Events!
-                        </Accordion.Toggle>
-
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </Accordion.Toggle>
                             <Accordion.Collapse eventKey="0">
-                                <Card.Body>Hello! I'm the body</Card.Body>
+                                <Card.Body><EventList events={user.events} title={user.username} /></Card.Body>
                             </Accordion.Collapse>
                         </Card>
 
@@ -71,10 +75,18 @@ const Profile = () => {
                         <h2>Friends</h2>
                         <Card>
                             <Accordion.Toggle variant="link" eventKey="1">
-                                Click To See Friends!
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="1">
-                                <Card.Body>Hello! I'm the body</Card.Body>
+                                <Card.Body>
+                                    <FriendList
+                                        username={user.username}
+                                        friendCount={user.friendCount}
+                                        friends={user.friends}
+                                    />
+                                </Card.Body>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>

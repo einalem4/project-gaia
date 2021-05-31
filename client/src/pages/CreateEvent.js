@@ -20,7 +20,7 @@ const CreateEvent = () => {
   const history = useHistory();
 
   const [addEvent, { error }] = useMutation(ADD_EVENT);
-    
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInput({ ...input, [name]: value });
@@ -92,7 +92,7 @@ const CreateEvent = () => {
           {/* City */}
           <Form.Group as={Col} className='my-3'>
             <Form.Label>City</Form.Label>
-            <Form.Control name="city" onChange={handleChange} placeholder="City" value={input.city}/>
+            <Form.Control name="city" onChange={handleChange} placeholder="City" value={input.city} />
           </Form.Group>
 
           {/* State*/}
@@ -171,6 +171,7 @@ const CreateEvent = () => {
           </Button>
         </Form>
       </Container>
+      {error && <div>Something went wrong...</div>}
     </Jumbotron>
   );
 }
