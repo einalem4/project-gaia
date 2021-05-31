@@ -86,9 +86,10 @@ const resolvers = {
                     image
                 }
                 const createdEvent = await Event.create({ ...newEvent, username: context.user.username });
-                User.findByIdAndUpdate(
+                    
+                await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { events: createdEvent._id } },
+                    { $push: { events: createdEvent._id } },
                     { new: true }
                 );
                 return createdEvent;
