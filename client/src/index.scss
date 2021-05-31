@@ -188,6 +188,82 @@ h6 {
   }
 }
 
+#rsvp-btn, #login-btn {
+  box-shadow:inset 0px 1px 0px 0px #9acc85;
+	background:linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
+	background-color: $success;
+	border:1px solid #3b6e22;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding: 6px 76px;
+	text-decoration:none;
+}
+#rsvp-btn:hover {
+	background-color:#5cbf2a;
+}
+#rsvp-btn:active {
+	position:relative;
+	top:10px;
+}
+
+#signup-btn {
+  box-shadow:inset 0px 1px 0px 0px;
+	background-color: lightgray;
+	border:1px solid $primary;
+	display:inline-block;
+	cursor:pointer;
+	color: $primary;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding: 6px 76px;
+	text-decoration:none;
+}
+
+#rsvp-btn:hover {
+	background-color:#5cbf2a;
+}
+#rsvp-btn:active {
+	position:relative;
+	top:10px;
+}
+
+//single event page
+#card2 {
+  background-color: lightgrey;
+  height: 37rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+#login, #signup {
+  background-color: lightgrey;
+  height: 25rem;
+  width: 21rem;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.7);
+  color: #2a9de6;
+
+  h2 {
+    color:$dark-blue
+  }
+}
+
+#pwd{
+  padding-bottom: 20px;
+}
+
 @media (min-width: 576px) {
   #search {
     div {

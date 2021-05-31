@@ -33,7 +33,7 @@ const Signup =() => {
   };
 
   return (
-    <div className="container my-1">
+    <div className="container my-1" id='signup'>
       <Link to="/login">
         ← Go to Login
       </Link>
@@ -64,7 +64,7 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group" id='pwd'>
           <label htmlFor="password">Password:</label>
           <input
             className='form-control'
@@ -76,12 +76,8 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <button className="btn btn-primary btn-block" type='submit'>
+        <button className="btn btn-primary btn-block" id='signup-btn' type='submit'>
             Sign Up
-        </button>
-        <br/>
-        <button className="btn btn-success btn-block" type='submit'>
-            Login
         </button>
       </form>
       {error && <div>Signup failed</div>}

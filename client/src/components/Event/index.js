@@ -29,7 +29,7 @@ function Event() {
     };
     return (
         <>
-        <Card style={{ width: '18rem' }}>
+        <Card id='card2' style={{ width: '18rem' }}>
         <Card.Title>{eventData.name}</Card.Title>
         <Card.Text>📆 Date: {eventData.date}</Card.Text>
         <Card.Text>🕓 Time:{eventData.time}</Card.Text>
@@ -40,7 +40,7 @@ function Event() {
             <Card.Text>
             {eventData.description}
              </Card.Text>
-               <Button variant="success">RSVP</Button>
+               <Button id='rsvp-btn' variant="success">RSVP</Button>
             </Card.Body>
         </Card>
 
