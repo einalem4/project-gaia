@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card,  Container, Row, Col } from 'react-bootstrap';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 
 
 const EventList = ({ events }) => {
@@ -15,12 +15,8 @@ const EventList = ({ events }) => {
           {events &&
             events.map(event => (
               <Link to={`/event/${event._id}`} style={{ textDecoration: 'none' }}>
-                <Card.Body className='d-flex flex-row justify-content-start align-items-center' key={event._id}>
-                  <Card.Text><h3>{event.name}</h3></Card.Text>
-                  <Card.Text>{event.date}</Card.Text>
-                  <Card.Text>{event.time}</Card.Text>
-                  <Card.Text>{event.address}</Card.Text>
-                  <Card.Text>{event.city}</Card.Text>
+                <Card.Body className='d-flex flex-row justify-content-start align-items-center my-2' key={event._id}>
+                  <Card.Text ><h3 >{event.name}</h3> {event.date} • {event.time} • {event.address} • {event.city} • {event.state} </Card.Text>
                 </Card.Body>
               </Link>
             ))}

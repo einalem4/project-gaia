@@ -66,7 +66,6 @@ const CreateEvent = () => {
 
   return (
     <Jumbotron fluid className='m-5'>
-      <div className='background'></div>
       <Container id="create">
         <h1 >Create Event</h1>
         <p>

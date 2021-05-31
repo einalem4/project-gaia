@@ -14,7 +14,7 @@ const FriendList = ({ friendCount, username, friends }) => {
         <Col>
           {friends.map(friend => (
             <Link to={`/profile/${friend.username}`}>{friend.username}>
-              <Card.Body className='d-flex flex-row justify-content-start align-items-center' key={friend._id}>
+              <Card.Body className='d-flex flex-row justify-content-start align-items-center my-2' key={friend._id}>
                 <Card.Text>
                   {username}'s {friendCount} {friendCount === 1 ? 'friend' : 'friends'}
                 </Card.Text>
