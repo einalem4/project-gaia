@@ -43,14 +43,6 @@ export const ADD_EVENT = gql`
 `;
 
 export const ADD_COMMENT = gql`
-<<<<<<< HEAD
-mutation addComment($commentText: String!) {
-  addComment(commentText: $commentText) {
-      _id
-      username
-      commentText
-      createdAt
-=======
 mutation addComment($eventId: ID!, $commentText: String!) {
   addComment(eventId: $eventId, commentText: $commentText) {
       _id
@@ -74,7 +66,6 @@ export const ADD_FRIEND = gql`
         _id
         username
       }
->>>>>>> 66540aabe1e978132c596e3c4363205c42ab34db
     }
   }
 `;
