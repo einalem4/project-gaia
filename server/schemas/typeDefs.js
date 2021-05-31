@@ -1,12 +1,10 @@
 const { gql } = require('apollo-server-express');
-
 // import the gql tagged template function
 const typeDefs = gql`
     type Auth {
         token: ID!
         user: User
     }
-
     type User {
         _id: ID
         username: String
@@ -17,7 +15,6 @@ const typeDefs = gql`
         friendCount: Int
         image: String
     }
-
     input EventInput {
         name: String!
         date: String!
@@ -28,7 +25,6 @@ const typeDefs = gql`
         zip: String!
         description: String!
       }
-
       type Event {
         _id: ID
         name: String!
@@ -44,14 +40,12 @@ const typeDefs = gql`
         image: String
         createdAt: String!
     }
-
     type Comment {
         _id: ID
         commentText: String
         username: String
         createdAt: String
     }
-
     type Query {
         me: User
         users: [User]
@@ -61,7 +55,6 @@ const typeDefs = gql`
         singleEvent(_id: ID!): Event
         searchEvents(city: String!): [Event]
     }
-
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
@@ -70,6 +63,5 @@ const typeDefs = gql`
         addFriend(friendId: ID!): User
     }
 `;
-
 // export the typeDefs
 module.exports = typeDefs;

@@ -40,9 +40,10 @@ const Signup =() => {
 
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+        <div className="form-group">
           <label htmlFor="username">Username:</label>
           <input
+            className='form-control'
             placeholder="Username"
             name="username"
             type="username"
@@ -51,9 +52,10 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
+            className='form-control'
             placeholder="youremail@test.com"
             name="email"
             type="email"
@@ -62,9 +64,10 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="form-group">
           <label htmlFor="password">Password:</label>
           <input
+            className='form-control'
             placeholder="******"
             name="password"
             type="password"
@@ -73,11 +76,13 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row flex-end">
-          <button type="submit">
-            Submit
-          </button>
-        </div>
+        <button className="btn btn-primary btn-block" type='submit'>
+            Sign Up
+        </button>
+        <br/>
+        <button className="btn btn-success btn-block" type='submit'>
+            Login
+        </button>
       </form>
       {error && <div>Signup failed</div>}
     </div>
