@@ -67,7 +67,7 @@ const Profile = () => {
                                 </svg>
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="0">
-                                <Card.Body><EventList events={user.events} title={user.username} /></Card.Body>
+                                <EventList events={user.events} />
                             </Accordion.Collapse>
                         </Card>
 
@@ -80,13 +80,11 @@ const Profile = () => {
                                 </svg>
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="1">
-                                <Card.Body>
-                                    <FriendList
-                                        username={user.username}
-                                        friendCount={user.friendCount}
-                                        friends={user.friends}
-                                    />
-                                </Card.Body>
+                                <FriendList
+                                    username={user.username}
+                                    friendCount={user.friendCount}
+                                    friends={user.friends}
+                                />
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>

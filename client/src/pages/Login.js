@@ -71,6 +71,7 @@ function Login(props) {
         <button className="btn btn-primary btn-block" type='submit'>
             Sign Up
         </button>
+        {error && <div>Login failed</div>}
       </form>
     </div>
   );
