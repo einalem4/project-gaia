@@ -25,12 +25,12 @@ const ResultsMap = props => {
 
         const { coordinates } = await response.json();
 
-        console.log(coordinates);
+        // console.log(coordinates);
     }
 
     const returnedData = mapData.map(event => {
         // console.log(event.address + ' ' + event.city + ' ' + event.state)
-        getGeoCode(event.city)
+        getGeoCode(event)
     });
 
     // console.log(returnedData);

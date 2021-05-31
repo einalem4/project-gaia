@@ -22,7 +22,7 @@ const Results = () => {
     return(
         <Container id="results" className='d-flex flex-column justify-content-center align-items-center' fluid>
             <Row className='w-100 h-100'>
-                <Col xs={12} md={6}>
+                <Col xs={12} md={6} className='h-100' style={{overflowY: 'scroll'}}>
                     <CardDeck>
                         {events.map(event => (
                             <Card className='d-flex flex-row justify-content-start align-items-center my-2' key={event._id}>
