@@ -191,6 +191,24 @@ h6 {
   }
 }
 
+#event {
+  background-color: $light-grey;
+  padding: 1.5rem;
+  border-radius: 20px;
+
+  h2 {
+    color: $dark-blue;
+    // text-align: center;
+  }
+
+  h3 {
+    color: black;
+  }
+  .btn {
+    width: 150px;
+  }
+}
+
 @media (min-width: 576px) {
   #search {
     div {

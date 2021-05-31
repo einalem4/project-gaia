@@ -57,6 +57,10 @@ const eventSchema = new Schema(
   }
 );
 
+eventSchema.virtual('commentCount').get(function () {
+  return this.comments.length;
+});
+
 const Event = model('Event', eventSchema);
 
 module.exports = Event;

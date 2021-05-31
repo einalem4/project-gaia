@@ -9,7 +9,7 @@ import Profile from './pages/Profile';
 import CreateEvent from './pages/CreateEvent';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Event from './components/Event/index';
+import Event from './pages/Event';
 import Results from './pages/Results';
 
 const client = new ApolloClient({
@@ -40,7 +40,7 @@ function App() {
               <Route exact path ='/signup' component={SignUp} />
               <Route exact path ='/event' component={Event} />
               <Route exact path ='/results/:city' component={Results} />
-              <Route exact path ='/event/:id' component={Home} />
+              <Route exact path ='/event/:id' component={Event} />
             </Switch>
           </main>
           <Footer />

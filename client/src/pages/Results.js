@@ -46,7 +46,7 @@ const Results = () => {
                                     )}
                                     <Card.Text>{event.description}</Card.Text>
                                     <Button variant='primary'>
-                                        <Link to={`/event/${event.id}`} style={{color: 'white', textDecoration:'none'}}>View Event</Link>
+                                        <Link to={`/event/${event._id}`} style={{color: 'white', textDecoration:'none'}}>View Event</Link>
                                     </Button>
                                 </Card.Body>
                             </Card>    
