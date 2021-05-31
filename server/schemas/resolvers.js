@@ -34,14 +34,14 @@ const resolvers = {
         },
         userEvents: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Event.find(params).sort({ createdAt: -1 });
+            return Event.find(params).sort({ createdAt: -1 }).populate('comments');
         },
         singleEvent: async (parent, { _id }) => {
-            return Event.findOne({ _id });
+            return Event.findOne({ _id }).populate('comments');
         },
         searchEvents: async(parent, { city }) => {
             const params = city ? { city } : {};
-            return Event.find(params);
+            return Event.find(params).populate('comments');
         }
     },
     Mutation: {

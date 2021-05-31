@@ -37,6 +37,7 @@ export const QUERY_USER_EVENTS = gql`
       createdAt
       username
       image
+      commentCount
       comments {
         _id
         createdAt
@@ -62,6 +63,7 @@ export const QUERY_SINGLE_EVENT = gql`
       createdAt
       username
       image
+      commentCount
       comments {
         _id
         createdAt
@@ -87,6 +89,7 @@ export const QUERY_SEARCH_EVENTS = gql`
       createdAt
       username
       image
+      commentCount
       comments {
         _id
         createdAt
@@ -111,6 +114,7 @@ export const QUERY_ALL_EVENTS = gql`
       description
       createdAt
       username
+      commentCount
       image
       comments {
         _id
