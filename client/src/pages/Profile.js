@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -11,6 +11,8 @@ import FriendList from '../components/FriendList';
 const Profile = () => {
     const { username: userParam } = useParams();
     const [addFriend] = useMutation(ADD_FRIEND);
+    const [activeId, setActiveId] = useState('0');
+
 
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam }
@@ -44,6 +46,15 @@ const Profile = () => {
             console.error(e);
         }
     };
+
+    const toggleActive = (id) => {
+        if (activeId === id) {
+            setActiveId(null);
+        } else {
+            setActiveId(id);
+        }
+    }
+    
     return (
         <Jumbotron fluid className='mb-5'>
             <Container id="profile">
@@ -60,8 +71,8 @@ const Profile = () => {
                     {/* Created Events*/}
                     <Accordion>
                         <h2>Created Events</h2>
-                        <Card>
-                            <Accordion.Toggle variant="link" eventKey="0">
+                        <Card className={activeId === '0' ? 'panel-wrap active-panel' : 'panel-wrap'}>
+                            <Accordion.Toggle onClick={() => toggleActive('0')} variant="link" eventKey="0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
                                     <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                 </svg>
@@ -73,8 +84,8 @@ const Profile = () => {
 
                         {/* Friends */}
                         <h2>Friends</h2>
-                        <Card>
-                            <Accordion.Toggle variant="link" eventKey="1">
+                        <Card className={activeId === '1' ? 'panel-wrap active-panel' : 'panel-wrap'}>
+                            <Accordion.Toggle onClick={() => toggleActive('1')} variant="link" eventKey="1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
                                     <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                 </svg>
