@@ -73,7 +73,7 @@ const Signup =() => {
           />
         </div>
         <div id='btn-signup'>
-        <button className="btn btn-primary btn-block" id='signup-btn2' type='submit'>
+        <button className="signup-btn btn-primary btn-block" id='signup-btn2' type='submit'>
             Sign Up
         </button>
         </div>
