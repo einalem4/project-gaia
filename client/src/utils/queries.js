@@ -13,6 +13,10 @@ export const QUERY_USER = gql`
       }
       events {
         _id
+        name
+        image
+        date
+        username
       }
     }
   }
@@ -125,6 +129,10 @@ export const QUERY_ME = gql`
       username
       email
       image
+      friends {
+        _id
+        username
+      }
       events {
         _id
         name
@@ -144,7 +152,7 @@ export const QUERY_ME = gql`
           commentText
           username
         }
+      }
     }
   }
-}
 `;
