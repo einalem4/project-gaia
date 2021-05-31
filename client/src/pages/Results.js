@@ -34,15 +34,15 @@ const Results = () => {
                                     {Auth.loggedIn() ? (
                                         <>
                                             <Card.Subtitle>
-                                                <CalendarEvent className='m-2' /> {event.date} 
-                                                <Clock className='m-2' /> {event.time} 
-                                                <GeoAlt className='m-2' />{event.address}
+                                                <CalendarEvent style={{marginLeft: '0px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }}/> {event.date} 
+                                                <Clock style={{marginLeft: '10px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }} /> {event.time} 
+                                                <GeoAlt style={{marginLeft: '10px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }} /> {event.address}
                                             </Card.Subtitle>
                                         </>    
                                     ) : (
                                         <>
                                             <Card.Subtitle>
-                                                <CalendarEvent className='m-2' /> {event.date} 
+                                                <CalendarEvent style={{marginLeft: '0px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }}/> {event.date} 
                                             </Card.Subtitle>
                                         </>
                                     )}
