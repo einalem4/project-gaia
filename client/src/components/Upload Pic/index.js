@@ -46,7 +46,6 @@ class Upload extends Component {
          
         return (
           <div>
-            <h2>File Details:</h2>
              
 <p>File Name: {this.state.selectedFile.name}</p>
  
