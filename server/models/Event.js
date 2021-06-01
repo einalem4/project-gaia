@@ -48,6 +48,12 @@ const eventSchema = new Schema(
     image: {
       type: String
     },
+    attendees: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ],
     comments: [commentSchema]
   },
   {
@@ -59,6 +65,10 @@ const eventSchema = new Schema(
 
 eventSchema.virtual('commentCount').get(function () {
   return this.comments.length;
+});
+
+eventSchema.virtual('attendanceCount').get(function () {
+  return this.attendees.length;
 });
 
 const Event = model('Event', eventSchema);

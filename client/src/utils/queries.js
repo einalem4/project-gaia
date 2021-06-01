@@ -26,6 +26,7 @@ export const QUERY_USER_EVENTS = gql`
   query userEvents($username: String!) {
     userEvents(username: $username) {
       _id
+      username
       name
       date
       time
@@ -34,16 +35,21 @@ export const QUERY_USER_EVENTS = gql`
       state
       zip
       description
-      createdAt
-      username
       image
-      commentCount
+      createdAt
+      attendees {
+        _id
+        username
+        image
+      }
+      attendanceCount
       comments {
         _id
         createdAt
         commentText
         username
       }
+      commentCount
     }
   }
 `;
@@ -52,6 +58,7 @@ export const QUERY_SINGLE_EVENT = gql`
   query singleEvent($id: ID!) {
     singleEvent(_id: $id) {
       _id
+      username
       name
       date
       time
@@ -60,16 +67,21 @@ export const QUERY_SINGLE_EVENT = gql`
       state
       zip
       description
-      createdAt
-      username
       image
-      commentCount
+      createdAt
+      attendees {
+        _id
+        username
+        image
+      }
+      attendanceCount
       comments {
         _id
         createdAt
         commentText
         username
       }
+      commentCount
     }
   }
 `;
@@ -78,6 +90,7 @@ export const QUERY_SEARCH_EVENTS = gql`
   query searchEvents($city: String!) {
     searchEvents(city: $city) {
       _id
+      username
       name
       date
       time
@@ -86,16 +99,21 @@ export const QUERY_SEARCH_EVENTS = gql`
       state
       zip
       description
-      createdAt
-      username
       image
-      commentCount
+      createdAt
+      attendees {
+        _id
+        username
+        image
+      }
+      attendanceCount
       comments {
         _id
         createdAt
         commentText
         username
       }
+      commentCount
     }
   }
 `;
@@ -104,6 +122,7 @@ export const QUERY_ALL_EVENTS = gql`
   query events {
     events {
       _id
+      username
       name
       date
       time
@@ -112,16 +131,21 @@ export const QUERY_ALL_EVENTS = gql`
       state
       zip
       description
-      createdAt
-      username
-      commentCount
       image
+      createdAt
+      attendees {
+        _id
+        username
+        image
+      }
+      attendanceCount
       comments {
         _id
         createdAt
         commentText
         username
       }
+      commentCount
     }
   }
 `;
