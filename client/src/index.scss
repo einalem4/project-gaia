@@ -5,6 +5,7 @@ $success: #46b04d;
 $warning: #e9c46a;
 $dark-blue: #0e6499;
 $light-grey: rgb(235, 235, 235);
+$mid-grey: rgb(105, 105, 105);
 $dark-grey: rgb(50, 50, 50);
 
 $font-family-base: "dolly-new", serif;
@@ -61,8 +62,8 @@ h6 {
   text-align: center;
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("./assets/images/woods-cleanup.jpg");
-  background-position: top 43% right 22%;
   background-size: cover;
+  background-position: top 43% right 22%;
   color: white;
 
   div {
@@ -192,23 +193,79 @@ h6 {
 }
 
 #event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: $light-grey;
   padding: 1.5rem;
   border-radius: 20px;
 
-  h2 {
-    color: $dark-blue;
-    // text-align: center;
+  .event-details {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .event-img {
+      border-radius: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: $dark-blue;
+    }
+
+    .event-info {
+      font-size: 1rem;
+      color: $mid-grey;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.5rem 0;
+
+      .event-icons {
+        margin: 0px 7px;
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin: 1rem 0;
+    }
+  
+    h5 {
+      color: black;
+    }
+  
+    .btn {
+      width: 100%
+    }
   }
 
-  h3 {
-    color: black;
-  }
-  .btn {
-    width: 150px;
+  .event-comments {
+    h3 {
+      color: black;
+    }
+
+    .btn {
+      width: 100%;
+    }
   }
 }
 
+#attendance-list {
+  .card-deck {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.comment-info {
+  font-size: 0.8rem;
+  color: $mid-grey;
+}
+
+// breakpoints for small devices
 @media (min-width: 576px) {
   #search {
     div {
@@ -233,12 +290,22 @@ h6 {
       font-size: 1.15rem;
     }
   }
+
+  #event {
+    .event-details {
+      .event-info {
+        font-size: 0.9rem;
+      }
+    }
+  }
 }
 
+// breakpoints for medium devices
 @media (min-width: 768px) {
   #search {
-    background-position: center;
-
+    height: 60vh;
+    background-position: bottom;
+    
     div {
       .input-group {
         flex-direction: row;
@@ -267,10 +334,38 @@ h6 {
       width: 600px;
     }
   }
+
+  #event {
+    .event-details {
+      flex-direction: row;
+      text-align: left;
+
+      .event-info {
+        font-size: 0.9rem;
+        color: $mid-grey;
+        justify-content: flex-start;
+
+        .geo-icon {
+          margin-left: 0;
+        }
+      }
+    }  
+  }
+
+  #attendance-list {
+    padding: 0;
+    .card-deck {
+      justify-content: flex-start;
+      text-align: left;
+    }
+  }
 }
 
+// breakpoints for large devices
 @media (min-width: 992px) {
   #search {
+    height: 70vh;
+    background-position: center;
     div {
       padding: 3rem;
 
@@ -296,6 +391,32 @@ h6 {
 
     p {
       font-size: 1.5rem;
+    }
+  }
+
+  #event {
+    width: 75%;
+
+    .event-details {
+      width: 100%;
+
+      .event-info {
+        .geo-icon {
+          margin-left: 7px;
+        }
+      }
+
+      .btn {
+        width: 150px;
+      }
+    }
+
+    .event-comments {
+      width: 100%;
+
+      .btn {
+        width: 150px;
+      }
     }
   }
 }

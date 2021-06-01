@@ -69,3 +69,16 @@ export const ADD_FRIEND = gql`
     }
   }
 `;
+
+export const ADD_ATTENDEE = gql`
+  mutation addAttendee($eventId: ID!) {
+    addAttendee(eventId: $eventId) {
+      _id
+      attendanceCount
+      attendees {
+        _id
+        username
+      }
+    }
+  }
+`;

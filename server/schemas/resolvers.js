@@ -31,17 +31,24 @@ const resolvers = {
         events: async () => {
             return Event.find()
                 .populate('comments')
+                .populate('attendees');
         },
         userEvents: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Event.find(params).sort({ createdAt: -1 }).populate('comments');
+            return Event.find(params).sort({ createdAt: -1 })
+                .populate('comments')
+                .populate('attendees');
         },
         singleEvent: async (parent, { _id }) => {
-            return Event.findOne({ _id }).populate('comments');
+            return Event.findOne({ _id })
+                .populate('comments')
+                .populate('attendees');
         },
         searchEvents: async(parent, { city }) => {
             const params = city ? { city } : {};
-            return Event.find(params).populate('comments');
+            return Event.find(params)
+                .populate('comments')
+                .populate('attendees');
         }
     },
     Mutation: {
@@ -103,7 +110,19 @@ const resolvers = {
                 { $addToSet: { friends: friendId } },
                 { new: true }
               ).populate('friends');
+
               return updatedUser;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        addAttendee: async (parent, { eventId }, context) => {
+            if (context.user) {
+                const updatedEvent = await Event.findOneAndUpdate(
+                    { _id: eventId },
+                    { $addToSet: { attendees: context.user._id } },
+                    { new: true }
+                ).populate('attendees');
+                return updatedEvent;
             }
             throw new AuthenticationError('You need to be logged in!');
         }

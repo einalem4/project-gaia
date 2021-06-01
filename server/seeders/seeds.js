@@ -103,6 +103,20 @@ db.once('open', async () => {
     );
   }
 
+  // populate attendees
+  for (let i = 0; i < 100; i += 1) {
+    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    const { _id: userId } = createdUsers.ops[randomUserIndex];
+
+    const randomEventIndex = Math.floor(Math.random() * createdEvents.length);
+    const { _id: eventId } = createdEvents[randomEventIndex];
+
+    await Event.updateOne(
+      { _id: eventId },
+      { $addToSet: { attendees: userId } }
+    )
+  }
+
   console.log('all done!');
   process.exit(0);
 });
