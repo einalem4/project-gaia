@@ -5,6 +5,7 @@ $success: #46b04d;
 $warning: #e9c46a;
 $dark-blue: #0e6499;
 $light-grey: rgb(235, 235, 235);
+$mid-grey: rgb(105, 105, 105);
 $dark-grey: rgb(50, 50, 50);
 
 $font-family-base: "dolly-new", serif;
@@ -192,24 +193,70 @@ h6 {
 }
 
 #event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: $light-grey;
   padding: 1.5rem;
   border-radius: 20px;
 
-  h2 {
-    color: $dark-blue;
-    // text-align: center;
+  .event-details {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .event-img {
+      border-radius: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: $dark-blue;
+    }
+
+    .event-info {
+      font-size: 0.7rem;
+      color: $mid-grey;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  
+    h5 {
+      color: black;
+    }
+  
+    .btn {
+      // width: 150px;
+      width: 100%
+    }
   }
 
-  h3, h5 {
-    color: black;
-  }
+  .event-comments {
+    h3 {
+      color: black;
+    }
 
-  .btn {
-    width: 150px;
+    .btn {
+      width: 100%;
+    }
   }
 }
 
+#attendance-list {
+  .card-deck {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.comment-info {
+  font-size: 0.8rem;
+  color: $mid-grey;
+}
+
+// breakpoints for small devices
 @media (min-width: 576px) {
   #search {
     div {
@@ -236,6 +283,7 @@ h6 {
   }
 }
 
+// breakpoints for medium devices
 @media (min-width: 768px) {
   #search {
     background-position: center;
@@ -270,6 +318,7 @@ h6 {
   }
 }
 
+// breakpoints for large devices
 @media (min-width: 992px) {
   #search {
     div {

@@ -64,7 +64,7 @@ const typeDefs = gql`
         addEvent(input: EventInput): Event
         addComment(eventId: ID!, commentText: String!): Event
         addFriend(friendId: ID!): User
-        addAttendee(eventId: ID!, userId: ID!): Event
+        addAttendee(eventId: ID!): Event
     }
 `;
 // export the typeDefs

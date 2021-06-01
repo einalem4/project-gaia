@@ -31,6 +31,7 @@ const resolvers = {
         events: async () => {
             return Event.find()
                 .populate('comments')
+                .populate('attendees');
         },
         userEvents: async (parent, { username }) => {
             const params = username ? { username } : {};
@@ -114,11 +115,11 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        addAttendee: async (parent, { eventId, userId }, context) => {
+        addAttendee: async (parent, { eventId }, context) => {
             if (context.user) {
                 const updatedEvent = await Event.findOneAndUpdate(
                     { _id: eventId },
-                    { $addToSet: { attendees: userId } },
+                    { $addToSet: { attendees: context.user._id } },
                     { new: true }
                 ).populate('attendees');
                 return updatedEvent;
