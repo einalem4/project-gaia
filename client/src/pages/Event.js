@@ -22,7 +22,23 @@ function Event() {
 
     const [commentText, setCommentText] = useState('');
 
-    const [comment] = useMutation(ADD_COMMENT);
+    const [addComment] = useMutation(ADD_COMMENT, {
+        update(cache, { data: { addComment } }) {
+            try {
+                const { singleEvent } = cache.readQuery({
+                    query: QUERY_SINGLE_EVENT,
+                    variables: { id: eventId }
+                });
+                cache.writeQuery({
+                    query: QUERY_SINGLE_EVENT,
+                    variables: { id: eventId },
+                    data: { singleEvent: { ...singleEvent, comments: [...singleEvent.comments, addComment] } }
+                });
+            } catch(e){
+                console.error(e)
+            }
+        }
+    });
 
     const [addAttendee] = useMutation(ADD_ATTENDEE, {
         update(cache, { data: { addAttendee } }) {
@@ -50,14 +66,16 @@ function Event() {
         if (event.target.value.length > 0){
             setCommentText(event.target.value)
         }
-        // console.log(commentText)
     }
 
     const handleFormSubmit = async event => {
         event.preventDefault();
         try {
-            await comment ({variables: {commentText}})
-            setCommentText('')
+            await addComment({
+                variables: {eventId, commentText}
+            });
+
+            setCommentText('');
         } catch (e) {
             console.log(e)
         }
@@ -85,13 +103,13 @@ function Event() {
                     <h2 className='mt-3'>{event.name}</h2>
                     <Container className='event-info p-0'>
                         <div>
-                            <CalendarEvent style={{marginLeft: '0px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }}/> {event.date} 
+                            <CalendarEvent className='event-icons' style={{marginLeft: '0px'}} /> {event.date} 
                         </div>
                         <div>
-                            <Clock style={{marginLeft: '10px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }} /> {event.time} 
+                            <Clock className='event-icons' /> {event.time} 
                         </div>
                         <div>
-                            <GeoAlt style={{marginLeft: '10px', marginRight: '5px', marginTop: '10px', marginBottom: '10px'  }} /> {event.address}, {event.city}, {event.state}
+                            <GeoAlt className='event-icons geo-icon' /> {event.address}, {event.city}, {event.state}
                         </div>
                     </Container>
                     <p>{event.description}</p>
@@ -107,7 +125,7 @@ function Event() {
                     <Form onSubmit={handleFormSubmit} className='mt-3'>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label></Form.Label>
-                            <Form.Control onChange={handleChange} as="textarea" rows={3} placeholder='Leave Comment Here'/>
+                            <Form.Control onChange={handleChange} value={commentText} as="textarea" rows={3} placeholder='Leave Comment Here'/>
                             <br/>
                             <Button variant='primary' type='submit'>Post Comment</Button>
                         </Form.Group>

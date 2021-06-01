@@ -62,8 +62,8 @@ h6 {
   text-align: center;
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("./assets/images/woods-cleanup.jpg");
-  background-position: top 43% right 22%;
   background-size: cover;
+  background-position: top 43% right 22%;
   color: white;
 
   div {
@@ -215,11 +215,21 @@ h6 {
     }
 
     .event-info {
-      font-size: 0.7rem;
+      font-size: 1rem;
       color: $mid-grey;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      margin: 0.5rem 0;
+
+      .event-icons {
+        margin: 0px 7px;
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin: 1rem 0;
     }
   
     h5 {
@@ -227,7 +237,6 @@ h6 {
     }
   
     .btn {
-      // width: 150px;
       width: 100%
     }
   }
@@ -281,13 +290,22 @@ h6 {
       font-size: 1.15rem;
     }
   }
+
+  #event {
+    .event-details {
+      .event-info {
+        font-size: 0.9rem;
+      }
+    }
+  }
 }
 
 // breakpoints for medium devices
 @media (min-width: 768px) {
   #search {
-    background-position: center;
-
+    height: 60vh;
+    background-position: bottom;
+    
     div {
       .input-group {
         flex-direction: row;
@@ -316,11 +334,38 @@ h6 {
       width: 600px;
     }
   }
+
+  #event {
+    .event-details {
+      flex-direction: row;
+      text-align: left;
+
+      .event-info {
+        font-size: 0.9rem;
+        color: $mid-grey;
+        justify-content: flex-start;
+
+        .geo-icon {
+          margin-left: 0;
+        }
+      }
+    }  
+  }
+
+  #attendance-list {
+    padding: 0;
+    .card-deck {
+      justify-content: flex-start;
+      text-align: left;
+    }
+  }
 }
 
 // breakpoints for large devices
 @media (min-width: 992px) {
   #search {
+    height: 70vh;
+    background-position: center;
     div {
       padding: 3rem;
 
@@ -346,6 +391,32 @@ h6 {
 
     p {
       font-size: 1.5rem;
+    }
+  }
+
+  #event {
+    width: 75%;
+
+    .event-details {
+      width: 100%;
+
+      .event-info {
+        .geo-icon {
+          margin-left: 7px;
+        }
+      }
+
+      .btn {
+        width: 150px;
+      }
+    }
+
+    .event-comments {
+      width: 100%;
+
+      .btn {
+        width: 150px;
+      }
     }
   }
 }
