@@ -67,13 +67,10 @@ eventSchema.virtual('commentCount').get(function () {
   return this.comments.length;
 });
 
-<<<<<<< HEAD
 eventSchema.virtual('attendanceCount').get(function () {
   return this.attendees.length;
 });
 
-=======
->>>>>>> 05072a5dc10fe95ab102df74c6c9605379ae81b3
 const Event = model('Event', eventSchema);
 
 module.exports = Event;
