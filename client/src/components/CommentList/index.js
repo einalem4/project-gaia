@@ -7,7 +7,7 @@ const CommentList = ( {comments, commentCount} ) => {
         <CardDeck>
             {commentCount ? (
                 comments.map(comment => (
-                    <Card className='my-2' style={{borderRadius: '10px'}}>
+                    <Card className='my-2' style={{borderRadius: '10px'}} key={comment._id}>
                         <Card.Body>
                                 <Card.Text style={{fontSize: '1.2rem'}}>
                                 {comment.commentText}

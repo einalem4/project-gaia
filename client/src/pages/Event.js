@@ -6,7 +6,9 @@ import { Card, Button, Form, Container, Row, Col, Image } from 'react-bootstrap'
 import { CalendarEvent, Clock, GeoAlt } from 'react-bootstrap-icons';
 import { ADD_COMMENT } from '../utils/mutations';
 import { QUERY_SINGLE_EVENT } from '../utils/queries';
+
 import CommentList from '../components/CommentList';
+import AttendanceList from '../components/AttendanceList';
 import Auth from '../utils/auth';
 
 function Event() {
@@ -60,6 +62,8 @@ function Event() {
                     </Container>
                     <p>{event.description}</p>
                     <Button variant="success">RSVP</Button>
+                    <h5 className='my-4'>People Attending: {event.attendanceCount}</h5>
+                    {event.attendanceCount > 0 && <AttendanceList attendees={event.attendees} />}
                 </Col>
             </Row>
 
