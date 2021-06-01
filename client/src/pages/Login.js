@@ -28,10 +28,8 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signup">
-        ← Go to Signup
-      </Link>
+    <div className="container my-5" id='login'>
+
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
@@ -47,7 +45,7 @@ function Login(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group" id='pwd'>
           <label htmlFor="password">Password:</label>
           <input
             placeholder="******"
@@ -64,14 +62,16 @@ function Login(props) {
             <p className="error-text" >The provided credentials are incorrect</p>
           </div> : null
         }
-        <button className="btn btn-success btn-block" type='submit'>
-            Login
+        <div id='btn-login'>
+        <button className="btn btn-success btn-block" id='login-btn1' type='submit'>
+             Login
         </button>
+        </div>
         <br/>
-        <button className="btn btn-primary btn-block" type='submit'>
-            Sign Up
-        </button>
-        {error && <div>Login failed</div>}
+        <Link to="/signup" id='signup-btn1'>
+        Sign Up
+        </Link>
+
       </form>
     </div>
   );
