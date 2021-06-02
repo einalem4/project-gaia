@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { Button, Form, Col, Container, Jumbotron } from 'react-bootstrap';
 import { QUERY_USER_EVENTS, QUERY_ME } from '../utils/queries';
 import { ADD_EVENT } from '../utils/mutations';
-import Upload from '../components/Upload Pic/index';
 
 const CreateEvent = () => {
   const defaultState = {
@@ -184,9 +183,6 @@ const CreateEvent = () => {
             <Form.Label>Event Description</Form.Label>
             <Form.Control name="description" onChange={handleChange} placeholder="Tell us about your event" as="textarea" rows={8} value={input.description} />
           </Form.Group>
-
-          {/*Upload Image */}
-          <Upload></Upload>
 
           <Button variant='secondary' type='submit' className='create-btn my-3'>
             Create Event
