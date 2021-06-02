@@ -187,6 +187,10 @@ h6 {
     border-radius: 20px;
     padding: 1.5rem;
 
+    .user-image {
+      width: 100%;
+    }
+
     h1 {
       color: $dark-grey;
       line-height: 1.25;
@@ -266,6 +270,8 @@ h6 {
   }
 
   .event-comments {
+    width: 100%;
+
     h3 {
       color: black;
     }
@@ -514,6 +520,21 @@ h6 {
       .results-map-container {
         height: 100%;
       }
+    }
+  }
+
+  #profile {
+    .user-image {
+      width: 60%;
+    }
+  }
+}
+
+// extra large devices
+@media (min-width: 1200px) {
+  #profile {
+    .user-image {
+      width: 50%;
     }
   }
 }
