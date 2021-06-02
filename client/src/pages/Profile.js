@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { ADD_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { Button, Container, Jumbotron, Col, Accordion, Card } from 'react-bootstrap';
+import { Button, Container, Jumbotron, Col, Accordion, Card, Row, Image } from 'react-bootstrap';
 import { CaretDownFill } from 'react-bootstrap-icons';
 import EventList from '../components/EventList';
 import FriendList from '../components/FriendList';
@@ -57,17 +57,22 @@ const Profile = () => {
     }
 
     return (
-        <Jumbotron fluid className='mb-5'>
+        <Jumbotron fluid className='my-5'>
             <Container id="profile">
                 <div>
-                    <Col>
-                        <h1 >{user.username}</h1>
-                        {userParam && (
-                            <Button variant='secondary' className='friend-btn' onClick={handleClick}>
-                                Add Friend
-                            </Button>
-                        )}
-                    </Col>
+                    <Row className='w-100'>
+                        <Col md={6}>
+                            <Image src={user.image} className='user-image' rounded />
+                        </Col>    
+                        <Col md={6}>
+                            <h1 >{user.username}</h1>
+                            {userParam && (
+                                <Button variant='secondary' className='friend-btn' onClick={handleClick}>
+                                    Add Friend
+                                </Button>
+                            )}
+                        </Col>    
+                    </Row>
 
                     {/* Created Events*/}
                     <Accordion style={{ margin: 'auto' }} defaultActiveKey="0">
@@ -83,7 +88,7 @@ const Profile = () => {
                     </Accordion>
 
                     {/* Friends */}
-                    <Accordion style={{ margin: 'auto' }} defaultActiveKey="1">
+                    <Accordion style={{ margin: 'auto' }} defaultActiveKey="0">
                         <h2 style={{ margin: '20px auto', display: 'inline' }}>Friends</h2>
                         <Accordion.Toggle onClick={() => toggleActive('0')} variant="link" eventKey="0" className='toggle'>
                             <CaretDownFill />

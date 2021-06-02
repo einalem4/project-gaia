@@ -7,16 +7,22 @@ export const QUERY_USER = gql`
       username
       email
       friendCount
+      image
       friends {
         _id
         username
       }
       events {
         _id
-        name
-        image
-        date
         username
+        name
+        date
+        time
+        address
+        city
+        state
+        zip
+        description
       }
     }
   }
