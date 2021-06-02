@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { useQuery } from '@apollo/react-hooks';
-import { Card, Button, Form, Container, Row, Col, Image } from 'react-bootstrap';
+import { Button, Form, Container, Row, Col, Image } from 'react-bootstrap';
 import { CalendarEvent, Clock, GeoAlt } from 'react-bootstrap-icons';
 import { ADD_COMMENT, ADD_ATTENDEE } from '../utils/mutations';
 import { QUERY_SINGLE_EVENT } from '../utils/queries';
