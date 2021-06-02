@@ -57,7 +57,7 @@ const Profile = () => {
     }
 
     return (
-        <Jumbotron fluid className='mb-5'>
+        <Jumbotron fluid className='my-5'>
             <Container id="profile">
                 <div>
                     <Row className='w-100'>
@@ -88,7 +88,7 @@ const Profile = () => {
                     </Accordion>
 
                     {/* Friends */}
-                    <Accordion style={{ margin: 'auto' }} defaultActiveKey="1">
+                    <Accordion style={{ margin: 'auto' }} defaultActiveKey="0">
                         <h2 style={{ margin: '20px auto', display: 'inline' }}>Friends</h2>
                         <Accordion.Toggle onClick={() => toggleActive('0')} variant="link" eventKey="0" className='toggle'>
                             <CaretDownFill />
