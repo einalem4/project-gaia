@@ -20,13 +20,13 @@ const Results = () => {
     }
 
     return(
-        <Container id="results" className='d-flex flex-column justify-content-center align-items-center' fluid>
+        <Container id="results" className='my-2' fluid>
             <Row className='w-100 h-100'>
-                <Col xs={12} md={6} className='h-100' style={{overflowY: 'scroll'}}>
+                <Col xs={12} lg={6} className='results-container'>
                     <CardDeck>
                         {events.map(event => (
-                            <Card className='d-flex flex-row justify-content-start align-items-center my-2' key={event._id}>
-                                <Card.Img variant='top' src={event.image} className='w-25'/>
+                            <Card className='my-2 event-card' key={event._id}>
+                                <Card.Img variant='top' src={event.image} className='event-img'/>
                                 <Card.Body>
                                     <Card.Title>{event.name}</Card.Title>
                                     {Auth.loggedIn() ? (
@@ -53,7 +53,7 @@ const Results = () => {
                         ))}
                     </CardDeck>
                 </Col>
-                <Col xs={12} md={6}>
+                <Col xs={12} lg={6} className='results-map-container'>
                     <ResultsMap mapData={events} />
                 </Col>
             </Row>

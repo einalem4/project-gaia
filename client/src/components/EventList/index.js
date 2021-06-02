@@ -9,13 +9,13 @@ const EventList = ({ events }) => {
   }
 
   return (
-    <Container className='d-flex flex-column' fluid>
-      <Row className='w-100 h-100'>
-        <Col>
+    <Container className='d-flex flex-column p-0 m-0' fluid>
+      <Row className='w-100 h-100 p-0 m-0'>
+        <Col className='w-100 p-0 m-0'>
           {events &&
             events.map(event => (
               <Link to={`/event/${event._id}`} style={{ textDecoration: 'none' }}>
-                <Card.Body className='d-flex flex-row justify-content-start align-items-center my-2' key={event._id}>
+                <Card.Body className='d-flex flex-row justify-content-start align-items-center my-2 w-100' key={event._id}>
                   <Card.Text ><h3 >{event.name}</h3> {event.date} • {event.time} • {event.address} • {event.city} • {event.state} </Card.Text>
                 </Card.Body>
               </Link>

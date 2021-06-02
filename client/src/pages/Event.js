@@ -18,22 +18,22 @@ function Event() {
         variables: { id: eventId }
     });
 
-    let event = data?.singleEvent || {};
+    let event = data?.singleEvent || [];
 
     const [commentText, setCommentText] = useState('');
 
     const [addComment] = useMutation(ADD_COMMENT, {
         update(cache, { data: { addComment } }) {
             try {
-                const { singleEvent } = cache.readQuery({
+                const { event } = cache.readQuery({
                     query: QUERY_SINGLE_EVENT,
                     variables: { id: eventId }
-                });
+                })
                 cache.writeQuery({
                     query: QUERY_SINGLE_EVENT,
                     variables: { id: eventId },
-                    data: { singleEvent: { ...singleEvent, comments: [...singleEvent.comments, addComment] } }
-                });
+                    data: { event: { ...event, comments: [...event.comments, addComment] } }
+                })
             } catch(e){
                 console.error(e)
             }
@@ -43,15 +43,15 @@ function Event() {
     const [addAttendee] = useMutation(ADD_ATTENDEE, {
         update(cache, { data: { addAttendee } }) {
             try {
-                const { singleEvent } = cache.readQuery({
+                const { event } = cache.readQuery({
                     query: QUERY_SINGLE_EVENT,
                     variables: { id: eventId }
-                });
+                })
                 cache.writeQuery({
                     query: QUERY_SINGLE_EVENT,
                     variables: { id: eventId },
-                    data: { singleEvent: { ...singleEvent, attendees: [...singleEvent.attendees, addAttendee] } }
-                });
+                    data: { event: { ...event, attendees: [...event.attendees, addAttendee] } }
+                })
             } catch(e){
                 console.error(e)
             }
@@ -77,7 +77,7 @@ function Event() {
 
             setCommentText('');
         } catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
 
@@ -139,4 +139,4 @@ function Event() {
     )
 }
 
-export default Event
+export default Event;
