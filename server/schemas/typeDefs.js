@@ -38,7 +38,7 @@ const typeDefs = gql`
         username: String
         comments: [Comment]
         commentCount: Int
-        image: String
+        image: String!
         createdAt: String!
     }
     type Comment {
