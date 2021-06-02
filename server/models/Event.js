@@ -1,13 +1,14 @@
 const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
+const timeFormat = require('../utils/timeFormat');
 
 const eventSchema = new Schema(
   {
     createdAt: {
       type: Date,
       default: Date.now,
-      get: timestamp => dateFormat(timestamp)
+      get: createstamp => dateFormat(createstamp)
     },
     username: {
       type: String,
@@ -22,8 +23,9 @@ const eventSchema = new Schema(
       required: true
     },
     time: {
-      type: String,
-      required: true
+      type: Date,
+      default: Date.now,
+      get: timestamp => timeFormat(timestamp)
     },
     address: {
       type: String,

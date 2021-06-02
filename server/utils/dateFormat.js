@@ -19,7 +19,7 @@ const addDateSuffix = date => {
 
 // function to format a timestamp, accepts the timestamp and an `options` object as parameters
 module.exports = (
-  timestamp,
+  createstamp,
   { monthLength = 'short', dateSuffix = true } = {}
 ) => {
   // create month object
@@ -38,7 +38,7 @@ module.exports = (
     11: monthLength === 'short' ? 'Dec' : 'December'
   };
 
-  const dateObj = new Date(timestamp);
+  const dateObj = new Date(createstamp);
   const formattedMonth = months[dateObj.getMonth()];
 
   const dayOfMonth = dateSuffix

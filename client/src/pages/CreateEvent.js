@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
 import { Button, Form, Col, Container, Jumbotron } from 'react-bootstrap';
-
 import { QUERY_USER_EVENTS, QUERY_ME } from '../utils/queries';
 import { ADD_EVENT } from '../utils/mutations';
 
