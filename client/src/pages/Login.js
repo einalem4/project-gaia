@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
 import { LOGIN_USER } from "../utils/mutations"
+import { Button } from 'react-bootstrap';
 import Auth from "../utils/auth";
 
 function Login(props) {
@@ -28,8 +29,7 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-5" id='login'>
-
+    <div className="container my-5 d-flex flex-column justify-content-center" id='login'>
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
@@ -45,7 +45,7 @@ function Login(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group" id='pwd'>
+        <div className="form-group my-2">
           <label htmlFor="password">Password:</label>
           <input
             placeholder="******"
@@ -62,15 +62,16 @@ function Login(props) {
             <p className="error-text" >The provided credentials are incorrect</p>
           </div> : null
         }
-        <div id='btn-login'>
-        <button className="btn btn-success btn-block" id='login-btn1' type='submit'>
-             Login
-        </button>
-        </div>
-        <br/>
-        <Link to="/signup" id='signup-btn1'>
-        Sign Up
-        </Link>
+
+        <Button variant='secondary' type='submit' className='w-100 my-2'>
+          Login
+        </Button>
+
+        <Button variant='outline-primary' className='w-100 signup-btn' >
+          <Link to="/signup" style={{textDecoration: 'none'}}>
+            Sign Up
+          </Link>
+        </Button>
 
       </form>
     </div>

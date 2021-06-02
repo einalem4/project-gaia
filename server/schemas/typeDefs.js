@@ -9,11 +9,11 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
+        image: String
         events: [Event]
         eventCount: Int
         friends: [User]
         friendCount: Int
-        image: String
     }
     input EventInput {
         name: String!
@@ -27,6 +27,7 @@ const typeDefs = gql`
     }
     type Event {
         _id: ID
+        username: String
         name: String!
         date: String!
         time: String!
@@ -35,10 +36,11 @@ const typeDefs = gql`
         state: String!
         zip: String!
         description: String!
-        username: String
+        image: String
+        attendees: [User]
+        attendanceCount: Int
         comments: [Comment]
         commentCount: Int
-        image: String
         createdAt: String!
     }
     type Comment {
@@ -62,6 +64,7 @@ const typeDefs = gql`
         addEvent(input: EventInput): Event
         addComment(eventId: ID!, commentText: String!): Event
         addFriend(friendId: ID!): User
+        addAttendee(eventId: ID!): Event
     }
 `;
 // export the typeDefs

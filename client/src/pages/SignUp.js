@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
-import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
+import { Button } from 'react-bootstrap';
+import Auth from "../utils/auth";
 
 const Signup =() => {
   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -33,7 +34,7 @@ const Signup =() => {
   };
 
   return (
-    <div className="container my-5" id='signup'>
+    <div className="container my-5 d-flex flex-column justify-content-center" id='signup'>
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
@@ -48,7 +49,7 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-2">
           <label htmlFor="email">Email:</label>
           <input
             className='form-control'
@@ -60,7 +61,7 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group" id='pwd'>
+        <div className="form-group mb-2">
           <label htmlFor="password">Password:</label>
           <input
             className='form-control'
@@ -72,16 +73,16 @@ const Signup =() => {
             onChange={handleChange}
           />
         </div>
-        <div id='btn-signup'>
-        <button className="signup-btn btn-primary btn-block" id='signup-btn2' type='submit'>
-            Sign Up
-        </button>
-        </div>
+        <Button variant='secondary' type='submit' className='w-100 my-2'>
+          Sign Up
+        </Button>
+        <Button variant='outline-primary' className='w-100 login-btn' >
+          <Link to="/login" style={{textDecoration: 'none'}}>
+            Login
+          </Link>
+        </Button>
       </form>
       {error && <div>Signup failed</div>}
-      <Link to="/login" id='login-btn2'>
-        Login
-      </Link>
     </div>
 
   );
