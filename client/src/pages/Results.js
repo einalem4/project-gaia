@@ -20,7 +20,8 @@ const Results = () => {
   }
 
   if (!events.length) {
-    return <CardDeck id="results" className='my-2 event-card w-100 h-100'><Card.Body><Card.Text>There aren't any events in this city yet </Card.Text></Card.Body></CardDeck>
+    return <CardDeck id="results" className='my-2 event-card w-100 h-100'><Card.Title>There aren't any events in this city yet</Card.Title></CardDeck>
+
   }
 
 
