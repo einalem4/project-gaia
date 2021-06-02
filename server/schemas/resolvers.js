@@ -1,6 +1,8 @@
 const { User, Event } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const dateFormat = require('../utils/dateFormat');
+
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
