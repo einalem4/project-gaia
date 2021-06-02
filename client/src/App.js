@@ -31,7 +31,7 @@ function App() {
       <Router>
         <div className='d-flex flex-column justify-content-between min-vh-100 vw-100'>
           <Header />
-          <main className='align-self-stretch'>
+          <main>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/profile/:username?" component={Profile} />

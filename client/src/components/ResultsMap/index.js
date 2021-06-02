@@ -20,18 +20,18 @@ const options = {
 const ResultsMap = props => {
     const {mapData} = props;
 
-    const getGeoCode = async (city) => {
-        const response = await geoCode(city);
+    // const getGeoCode = async (city) => {
+    //     const response = await geoCode(city);
 
-        const { coordinates } = await response.json();
+    //     const { coordinates } = await response.json();
 
-        // console.log(coordinates);
-    }
+    //     // console.log(coordinates);
+    // }
 
-    const returnedData = mapData.map(event => {
-        // console.log(event.address + ' ' + event.city + ' ' + event.state)
-        getGeoCode(event)
-    });
+    // const returnedData = mapData.map(event => {
+    //     // console.log(event.address + ' ' + event.city + ' ' + event.state)
+    //     getGeoCode(event)
+    // });
 
     // console.log(returnedData);
 
