@@ -136,13 +136,25 @@ h6 {
   .results-container {
     height: 50%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .card-deck {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     .event-card {
       width: 100%;
-      display: flex;
-      flex-direction: column;
+      display: inline-flex;
+      flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+
+      .event-img {
+        width: 30%;
+      }
     }
   }
 
@@ -419,8 +431,6 @@ h6 {
   #results {
     .row {
       justify-content: center;
-
-      .results-container {
         .event-card {
           display: flex;
           flex-direction: row;
@@ -431,7 +441,7 @@ h6 {
             width: 40%;
           }
         }
-      }
+      
 
       .results-map-container {
         height: 50%;
@@ -505,8 +515,19 @@ h6 {
 
       .results-container {
         height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .card-deck {
+          justify-content: center;
+        }
         
         .event-card {
+          width: 425px;
+          height: 500px;
+          margin-right: 1rem;
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
