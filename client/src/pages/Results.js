@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Card, CardDeck, Container, Row, Col, Button } from 'react-bootstrap';
+import { Card, CardDeck, Container, Row, Col, Button, Spinner } from 'react-bootstrap';
 import { CalendarEvent, Clock, GeoAlt } from 'react-bootstrap-icons';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_SEARCH_EVENTS } from '../utils/queries';
@@ -16,7 +16,12 @@ const Results = () => {
     const events = data?.searchEvents || {};
 
     if (loading) {
-       return <div>Loading...</div>;
+        return(
+            <div className='d-flex flex-column justify-content-center align-items-center'>
+                <Spinner animation='border' variant='primary' className='my-3' />
+                <h1 style={{color: 'black', display: 'inline'}}>Loading...</h1>
+            </div>
+        );
     }
 
     return(
