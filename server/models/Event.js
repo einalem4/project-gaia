@@ -22,8 +22,9 @@ const eventSchema = new Schema(
       required: true
     },
     time: {
-      type: String,
-      required: true
+      type: Date,
+      default: Date.now,
+      get: timestamp => dateFormat(timestamp)
     },
     address: {
       type: String,
