@@ -5,6 +5,7 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { ADD_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Button, Container, Jumbotron, Col, Accordion, Card } from 'react-bootstrap';
+import { CaretDownFill } from 'react-bootstrap-icons';
 import EventList from '../components/EventList';
 import FriendList from '../components/FriendList';
 
@@ -69,28 +70,26 @@ const Profile = () => {
                     </Col>
 
                     {/* Created Events*/}
-                    <Accordion style={{ margin: 'auto' }}>
-                        <h2 style={{ margin: '10px auto' }}>Created Events</h2>
-                        <Card style={{ padding: 0, margin: 'auto' }} className={activeId === '0' ? 'panel-wrap active-panel' : 'panel-wrap'}>
-                            <Accordion.Toggle onClick={() => toggleActive('0')} variant="link" eventKey="0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </Accordion.Toggle>
+                    <Accordion style={{ margin: 'auto' }} defaultActiveKey="0">
+                        <h2 style={{ margin: '10px auto', display: 'inline' }}>Created Events</h2>
+                        <Accordion.Toggle onClick={() => toggleActive('0')} variant="link" eventKey="0" className='toggle'>
+                            <CaretDownFill />
+                        </Accordion.Toggle>
+                        <Card style={{ padding: 0, margin: 'auto', width: '100%' }} className={activeId === '0' ? 'panel-wrap active-panel' : 'panel-wrap'}>
                             <Accordion.Collapse style={{ padding: 0, margin: 0 }} eventKey="0">
                                 <EventList events={user.events} />
                             </Accordion.Collapse>
                         </Card>
+                    </Accordion>
 
-                        {/* Friends */}
-                        <h2 style={{ margin: '20px auto' }}>Friends</h2>
+                    {/* Friends */}
+                    <Accordion style={{ margin: 'auto' }} defaultActiveKey="1">
+                        <h2 style={{ margin: '20px auto', display: 'inline' }}>Friends</h2>
+                        <Accordion.Toggle onClick={() => toggleActive('0')} variant="link" eventKey="0" className='toggle'>
+                            <CaretDownFill />
+                        </Accordion.Toggle>
                         <Card style={{ padding: 0, margin: '20px auto' }} className={activeId === '1' ? 'panel-wrap active-panel' : 'panel-wrap'}>
-                            <Accordion.Toggle onClick={() => toggleActive('1')} variant="link" eventKey="1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </Accordion.Toggle>
-                            <Accordion.Collapse style={{ padding: 0, margin: 0 }} eventKey="1">
+                            <Accordion.Collapse style={{ padding: 0, margin: 0 }} eventKey="0">
                                 <FriendList
                                     username={user.username}
                                     friendCount={user.friendCount}
