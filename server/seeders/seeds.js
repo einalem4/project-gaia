@@ -1,5 +1,4 @@
 const faker = require('faker');
-
 const db = require('../config/connection');
 const { Event, User } = require('../models');
 

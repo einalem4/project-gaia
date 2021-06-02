@@ -23,7 +23,7 @@ const Results = () => {
         <Container id="results" className='my-2' fluid>
             <Row className='w-100 h-100'>
                 <Col xs={12} lg={6} className='results-container'>
-                    <CardDeck>
+                    <CardDeck className='w-100'>
                         {events.map(event => (
                             <Card className='my-2 event-card' key={event._id}>
                                 <Card.Img variant='top' src={event.image} className='event-img'/>
