@@ -13,7 +13,8 @@ import Auth from '../utils/auth';
 function Event() {
   const { id: eventId } = useParams();
   const { loading, data } = useQuery(QUERY_SINGLE_EVENT, {
-    variables: { id: eventId }
+    variables: { id: eventId },
+    pollInterval: 500,
   });
 
   let event = data?.singleEvent || [];
