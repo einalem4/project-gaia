@@ -15,48 +15,17 @@ function Event() {
     const { id: eventId } = useParams();
 
     const { loading, data } = useQuery(QUERY_SINGLE_EVENT, {
-        variables: { id: eventId }
+        variables: { id: eventId },
+        pollInterval: 500,
     });
 
     let event = data?.singleEvent || [];
 
     const [commentText, setCommentText] = useState('');
 
-    const [addComment] = useMutation(ADD_COMMENT, {
-        update(cache, { data: { addComment } }) {
-            try {
-                const { event } = cache.readQuery({
-                    query: QUERY_SINGLE_EVENT,
-                    variables: { id: eventId }
-                })
-                cache.writeQuery({
-                    query: QUERY_SINGLE_EVENT,
-                    variables: { id: eventId },
-                    data: { event: { ...event, comments: [...event.comments, addComment] } }
-                })
-            } catch(e){
-                console.error(e)
-            }
-        }
-    });
+    const [addComment] = useMutation(ADD_COMMENT);
 
-    const [addAttendee] = useMutation(ADD_ATTENDEE, {
-        update(cache, { data: { addAttendee } }) {
-            try {
-                const { event } = cache.readQuery({
-                    query: QUERY_SINGLE_EVENT,
-                    variables: { id: eventId }
-                })
-                cache.writeQuery({
-                    query: QUERY_SINGLE_EVENT,
-                    variables: { id: eventId },
-                    data: { event: { ...event, attendees: [...event.attendees, addAttendee] } }
-                })
-            } catch(e){
-                console.error(e)
-            }
-        }
-    });
+    const [addAttendee] = useMutation(ADD_ATTENDEE);
 
     if (loading) {
         return <div>Loading...</div>
