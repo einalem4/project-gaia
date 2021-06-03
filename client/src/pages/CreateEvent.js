@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Button, Form, Col, Container, Jumbotron } from 'react-bootstrap';
 import { QUERY_USER_EVENTS, QUERY_ME } from '../utils/queries';
 import { ADD_EVENT } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 const CreateEvent = () => {
   const defaultState = {
@@ -62,6 +63,13 @@ const CreateEvent = () => {
     }
   };
 
+  if (!Auth.loggedIn()) {
+    return (
+      <h3 style={{ color: 'black', textAlign: 'center' }}>
+          You need to be logged in to see this page. Use the navigation links above to sign up or log in!
+      </h3>
+    );
+  };
 
   return (
     <Jumbotron fluid className='m-5'>
