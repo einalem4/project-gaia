@@ -64,7 +64,7 @@ const Results = () => {
           </CardDeck>
         </Col>
         <Col xs={12} lg={6} className='results-map-container'>
-          <ResultsMap mapData={events} />
+          <ResultsMap city={searchParam} mapData={events} />
         </Col>
       </Row>
     </Container>

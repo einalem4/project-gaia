@@ -1,15 +1,10 @@
 import React from 'react';
 import { GoogleMap, useLoadScript, withGoogleMap, Marker } from '@react-google-maps/api';
-import { geoCode } from '../../utils/API';
+import { geoCodeCity, geoCodeEvents } from '../../utils/API';
 
 const mapContainerStyle = {
     width: '100%',
     height: '100%'
-};
-
-const center = {
-    lat: 43.653225,
-    lng: -79.383186
 };
 
 const options = {
@@ -17,40 +12,48 @@ const options = {
     zoomControl: true
 }
 
-const ResultsMap = props => {
-    const {mapData} = props;
+const ResultsMap = ({city, mapData}) => {
+    const center = {
+        lat: '',
+        lng: ''
+    };
 
-    // const getGeoCode = async (city) => {
-    //     const response = await geoCode(city);
+    const [coordinates, setCoordinates] = useState(center);
 
-    //     const { coordinates } = await response.json();
+    const getCenter = async () => {return await geoCodeCity(city)};
+    
 
-    //     // console.log(coordinates);
-    // }
+    const markers = [];
+    
+    Promise.all(mapData.map(async (event) => {
+        return markers.push(await geoCodeEvents(event));
+    }));
 
-    // const returnedData = mapData.map(event => {
-    //     // console.log(event.address + ' ' + event.city + ' ' + event.state)
-    //     getGeoCode(event)
-    // });
-
-    // console.log(returnedData);
+    console.log(markers);
 
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY
-    })
+    });
+
 
     if (loadError) return "Error loading maps";
-    if (!isLoaded) return "Loading Maps"
+    if (!isLoaded) return "Loading Maps";
 
     return(
         <div style={{height: '100%'}}>
             <GoogleMap
                 mapContainerStyle={mapContainerStyle} 
-                zoom={8}
+                zoom={13}
                 center={center}
-                options={options}   
+                options={options}  
             >
+                {markers.map((event) => (
+                    <Marker 
+                        key={event.results[0].formatted_address} 
+                        position={{ lat: event.results[0].geometry.location.lat, lng: event.results[0].geometry.location.lng }} 
+                    />
+                ))}
             </GoogleMap>
         </div>
     )
