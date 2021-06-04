@@ -87,17 +87,25 @@ function Event() {
             <div>
               <CalendarEvent className='event-icons' style={{ marginLeft: '0px' }} /> {event.date}
             </div>
+            {Auth.loggedIn() &&
+              <div>
+                <Clock className='event-icons' /> {event.time}
+              </div>
+            }
             <div>
-              <Clock className='event-icons' /> {event.time}
-            </div>
-            <div>
-              <GeoAlt className='event-icons geo-icon' /> {event.address}, {event.city}, {event.state}
+              <GeoAlt className='event-icons geo-icon' />{event.address}, {event.city}, {event.state}
             </div>
           </Container>
           <p>{event.description}</p>
-          <Button variant="success" onClick={handleRSVP}>RSVP</Button>
+          {Auth.loggedIn() &&
+            <Button variant="success" onClick={handleRSVP}>RSVP</Button>
+          }
           <h5 className='mt-4'>People Attending: {event.attendanceCount}</h5>
-          {event.attendanceCount > 0 && <AttendanceList attendees={event.attendees} />}
+          {Auth.loggedIn() &&
+            <div>
+              {event.attendanceCount > 0 && <AttendanceList attendees={event.attendees} />}
+            </div>
+          }
         </Col>
       </Row>
 
