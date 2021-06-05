@@ -16,12 +16,12 @@ const Results = () => {
   const events = data?.searchEvents || {};
 
   if (loading) {
-      return(
-          <div className='d-flex flex-column justify-content-center align-items-center'>
-              <Spinner animation='border' variant='primary' className='my-3' />
-              <h1 style={{color: 'black', display: 'inline'}}>Loading...</h1>
-          </div>
-      );
+    return (
+      <div className='d-flex flex-column justify-content-center align-items-center'>
+        <Spinner animation='border' variant='primary' className='my-3' />
+        <h1 style={{ color: 'black', display: 'inline' }}>Loading...</h1>
+      </div>
+    );
   }
 
   if (!events.length) {
@@ -55,9 +55,11 @@ const Results = () => {
                     </>
                   )}
                   <Card.Text>{event.description}</Card.Text>
-                  <Button variant='primary'>
-                    <Link to={`/event/${event._id}`} style={{ color: 'white', textDecoration: 'none' }}>View Event</Link>
+                  <Link to={`/event/${event._id}`} style={{ color: 'white', textDecoration: 'none' }}>
+                    <Button variant='primary'>
+                      View Event
                   </Button>
+                  </Link>
                 </Card.Body>
               </Card>
             ))}
