@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { GoogleMap, useLoadScript, withGoogleMap, Marker } from '@react-google-maps/api';
 import { geoCodeCity, geoCodeEvents } from '../../utils/API';
 
